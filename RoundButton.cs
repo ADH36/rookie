@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AndroidSideloader
@@ -43,22 +44,23 @@ namespace AndroidSideloader
             Width = 65;
             Height = 30;
             stroke = false;
-            strokeColor = Color.Gray;
-            inactive1 = Color.FromArgb(44, 188, 210);
-            inactive2 = Color.FromArgb(33, 167, 188);
-            active1 = Color.FromArgb(64, 168, 183);
-            active2 = Color.FromArgb(36, 164, 183);
+            strokeColor = Color.FromArgb(70, 70, 74);
+            
+            // Modern button colors with subtle gradients
+            inactive1 = Color.FromArgb(0, 120, 215);     // Modern blue primary
+            inactive2 = Color.FromArgb(0, 99, 177);      // Slightly darker blue
+            active1 = Color.FromArgb(16, 137, 232);      // Lighter blue on hover
+            active2 = Color.FromArgb(0, 120, 215);       // Primary blue
 
-
-            radius = 10;
+            radius = 6;  // More subtle rounded corners
             roundedRect = new RoundedRectangleF(Width, Height, radius);
 
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer |
                      ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor |
                      ControlStyles.UserPaint, true);
             BackColor = Color.Transparent;
-            ForeColor = Color.Black;
-            Font = new System.Drawing.Font("Comic Sans MS", 10, FontStyle.Bold);
+            ForeColor = Color.FromArgb(255, 255, 255);  // Pure white text
+            Font = new System.Drawing.Font("Segoe UI", 9f, FontStyle.Regular);  // Modern font
             state = MouseState.Leave;
             Transparency = false;
         }
@@ -90,6 +92,14 @@ namespace AndroidSideloader
 
             if (Enabled)
             {
+                // Add subtle shadow effect for depth
+                Rectangle shadowRect = new Rectangle(1, 1, Width, Height);
+                using (GraphicsPath shadowPath = new RoundedRectangleF(Width, Height, radius, 1, 1).Path)
+                using (SolidBrush shadowBrush = new SolidBrush(Color.FromArgb(20, 0, 0, 0)))
+                {
+                    e.Graphics.FillPath(shadowBrush, shadowPath);
+                }
+
                 if (state == MouseState.Leave)
                 {
                     using (LinearGradientBrush inactiveGB = new LinearGradientBrush(rect, inactive1, inactive2, 90f))
@@ -106,7 +116,10 @@ namespace AndroidSideloader
                 }
                 else if (state == MouseState.Down)
                 {
-                    using (LinearGradientBrush downGB = new LinearGradientBrush(rect, Color.FromArgb(R1, G1, B1), Color.FromArgb(R2, G2, B2), 90f))
+                    // Pressed state with darker colors
+                    Color pressedColor1 = Color.FromArgb(0, 90, 158);
+                    Color pressedColor2 = Color.FromArgb(0, 78, 140);
+                    using (LinearGradientBrush downGB = new LinearGradientBrush(rect, pressedColor1, pressedColor2, 90f))
                     {
                         e.Graphics.FillPath(downGB, roundedRect.Path);
                     }
@@ -123,12 +136,12 @@ namespace AndroidSideloader
             }
             else
             {
-                Color linear1 = Color.FromArgb(190, 190, 190);
-                Color linear2 = Color.FromArgb(210, 210, 210);
-                using (LinearGradientBrush inactiveGB = new LinearGradientBrush(rect, linear1, linear2, 90f))
+                // Modern disabled state
+                Color disabledColor1 = Color.FromArgb(60, 60, 60);
+                Color disabledColor2 = Color.FromArgb(45, 45, 45);
+                using (LinearGradientBrush disabledGB = new LinearGradientBrush(rect, disabledColor1, disabledColor2, 90f))
                 {
-                    e.Graphics.FillPath(inactiveGB, roundedRect.Path);
-                    e.Graphics.DrawPath(new Pen(inactiveGB), roundedRect.Path);
+                    e.Graphics.FillPath(disabledGB, roundedRect.Path);
                 }
             }
 
@@ -168,25 +181,71 @@ namespace AndroidSideloader
             Invalidate();
             base.OnResize(e);
         }
-        protected override void OnMouseEnter(EventArgs e)
+        protected override async void OnMouseEnter(EventArgs e)
         {
             state = MouseState.Enter;
             base.OnMouseEnter(e);
-            Invalidate();
+            
+            // Smooth hover animation
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    if (!IsDisposed && InvokeRequired)
+                    {
+                        await Task.Delay(50); // Small delay for smoother transition
+                        if (!IsDisposed)
+                        {
+                            Invoke(new Action(() => Invalidate()));
+                        }
+                    }
+                    else if (!IsDisposed)
+                    {
+                        Invalidate();
+                    }
+                }
+                catch { /* Ignore disposal exceptions */ }
+            });
         }
-        protected override void OnMouseLeave(EventArgs e)
+        
+        protected override async void OnMouseLeave(EventArgs e)
         {
             state = MouseState.Leave;
             base.OnMouseLeave(e);
-            Invalidate();
+            
+            // Smooth leave animation
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    if (!IsDisposed && InvokeRequired)
+                    {
+                        await Task.Delay(50); // Small delay for smoother transition
+                        if (!IsDisposed)
+                        {
+                            Invoke(new Action(() => Invalidate()));
+                        }
+                    }
+                    else if (!IsDisposed)
+                    {
+                        Invalidate();
+                    }
+                }
+                catch { /* Ignore disposal exceptions */ }
+            });
         }
-        protected override void OnMouseDown(MouseEventArgs e)
+        
+        protected override async void OnMouseDown(MouseEventArgs e)
         {
             Capture = false;
             state = MouseState.Down;
             base.OnMouseDown(e);
+            
+            // Animate button press effect
+            _ = AnimationHelper.ButtonPressAsync(this);
             Invalidate();
         }
+        
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (state != MouseState.Leave)

@@ -194,14 +194,17 @@ namespace AndroidSideloader.Utilities
 
         private void CreateDefaultSettings()
         {
-            FontStyle = new Font("Microsoft Sans Serif", 11.25f);
-            BigFontStyle = new Font("Microsoft Sans Serif", 14f);
-            FontColor = Color.White;
-            ComboBoxColor = Color.FromArgb(25, 25, 25);
-            SubButtonColor = Color.FromArgb(25, 25, 25);
-            TextBoxColor = Color.FromArgb(25, 25, 25);
-            ButtonColor = Color.Black;
-            BackColor = Color.FromArgb(1, 1, 1);
+            // Modern typography - Segoe UI for better readability
+            FontStyle = new Font("Segoe UI", 10f);
+            BigFontStyle = new Font("Segoe UI", 13f, FontStyle.Bold);
+            
+            // Modern color scheme with better contrast and visual hierarchy
+            FontColor = Color.FromArgb(240, 240, 240);  // Softer white for better readability
+            ComboBoxColor = Color.FromArgb(45, 45, 48);  // Modern dark gray
+            SubButtonColor = Color.FromArgb(37, 37, 38); // Slightly darker for depth
+            TextBoxColor = Color.FromArgb(51, 51, 55);   // Input field background
+            ButtonColor = Color.FromArgb(0, 120, 215);   // Modern blue accent
+            BackColor = Color.FromArgb(30, 30, 30);      // Modern dark background
             CheckForUpdates = true;
             EnableMessageBoxes = true;
             FirstRun = true;

@@ -1616,3 +1616,4 @@ Success
 07:05:26.241 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: shell df
 07:05:26.264 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
 
+07:09:04.135 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: kill-server

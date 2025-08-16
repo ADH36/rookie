@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AndroidSideloader.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
@@ -24,7 +24,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FontStyle" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">Microsoft Sans Serif, 11.25pt</Value>
+      <Value Profile="(Default)">Segoe UI, 10pt</Value>
     </Setting>
     <Setting Name="BackPicturePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="BigFontStyle" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">Microsoft Sans Serif, 14pt</Value>
+      <Value Profile="(Default)">Segoe UI, 13pt, style=Bold</Value>
     </Setting>
     <Setting Name="ResignAPKs" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

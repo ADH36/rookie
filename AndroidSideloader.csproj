@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -215,6 +215,12 @@
     </Compile>
     <Compile Include="UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModernProgressIndicator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModernLoadingSpinner.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

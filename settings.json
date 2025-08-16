@@ -1,47 +1,47 @@
 {
   "FontStyle": {
-    "FontFamily": "Microsoft Sans Serif",
-    "Size": 11.25
+    "FontFamily": "Segoe UI",
+    "Size": 10.0
   },
   "BigFontStyle": {
-    "FontFamily": "Microsoft Sans Serif",
-    "Size": 14.0
+    "FontFamily": "Segoe UI",
+    "Size": 13.0
   },
   "FontColor": {
     "A": 255,
-    "R": 255,
-    "G": 255,
-    "B": 255
+    "R": 240,
+    "G": 240,
+    "B": 240
   },
   "ComboBoxColor": {
     "A": 255,
-    "R": 25,
-    "G": 25,
-    "B": 25
+    "R": 45,
+    "G": 45,
+    "B": 48
   },
   "SubButtonColor": {
     "A": 255,
-    "R": 25,
-    "G": 25,
-    "B": 25
+    "R": 37,
+    "G": 37,
+    "B": 38
   },
   "TextBoxColor": {
     "A": 255,
-    "R": 25,
-    "G": 25,
-    "B": 25
+    "R": 51,
+    "G": 51,
+    "B": 55
   },
   "ButtonColor": {
     "A": 255,
     "R": 0,
-    "G": 0,
-    "B": 0
+    "G": 120,
+    "B": 215
   },
   "BackColor": {
     "A": 255,
-    "R": 1,
-    "G": 1,
-    "B": 1
+    "R": 30,
+    "G": 30,
+    "B": 30
   },
   "CheckForUpdates": true,
   "EnableMessageBoxes": true,

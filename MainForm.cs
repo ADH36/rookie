@@ -74,6 +74,9 @@ namespace AndroidSideloader
             InitializeComponent();
             Logger.Initialize();
             InitializeTimeReferences();
+            
+            // Add modern hover effects to buttons
+            AddModernHoverEffects();
 
             SplashScreen = new Splash();
             SplashScreen.Show();
@@ -227,6 +230,10 @@ namespace AndroidSideloader
         private async void Form1_Load(object sender, EventArgs e)
         {
             _ = Logger.Log("Starting AndroidSideloader Application");
+
+            // Initialize responsive design
+            ResponsiveHelper.InitializeResponsive(this);
+            ResponsiveHelper.SetFormSizeConstraints(this, new Size(1067, 760));
 
             if (isOffline)
             {
@@ -388,7 +395,7 @@ namespace AndroidSideloader
 
             SplashScreen.Close();
 
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = ModernProgressIndicator.ProgressStyle.Marquee;
 
             if (!debugMode && settings.CheckForUpdates && !isOffline)
             {
@@ -595,13 +602,30 @@ namespace AndroidSideloader
             }
         }
 
-        private void ShowSubMenu(Panel subMenu)
+        private async void ShowSubMenu(Panel subMenu)
         {
-            subMenu.Visible = subMenu.Visible == false;
+            bool shouldShow = !subMenu.Visible;
+            
+            if (shouldShow)
+            {
+                // Smooth slide down animation
+                await AnimationHelper.SlidePanel(subMenu, true, SlideDirection.Down);
+            }
+            else
+            {
+                // Smooth slide up animation
+                await AnimationHelper.SlidePanel(subMenu, false, SlideDirection.Up);
+            }
         }
 
         private async void startsideloadbutton_Click(object sender, EventArgs e)
         {
+            // Add smooth button press animation
+            if (sender is Control button)
+            {
+                _ = AnimationHelper.ButtonPressAsync(button);
+            }
+            
             ProcessOutput output = new ProcessOutput("", "");
             string path = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -709,6 +733,12 @@ namespace AndroidSideloader
 
         public async void devicesbutton_Click(object sender, EventArgs e)
         {
+            // Add smooth button press animation
+            if (sender is Control button)
+            {
+                _ = AnimationHelper.ButtonPressAsync(button);
+            }
+            
             _ = await CheckForDevice();
 
             changeTitlebarToDevice();
@@ -739,7 +769,7 @@ namespace AndroidSideloader
             if (dialog.Show(Handle))
             {
                 // Set up continuous progress bar instead of marquee
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = ModernProgressIndicator.ProgressStyle.Continuous;
                 progressBar.Value = 0;
                 progressBar.Maximum = 100;
                 
@@ -2766,14 +2796,26 @@ namespace AndroidSideloader
             backupDrop.Text = (backupDrop.Text == "▼ BACKUP / RESTORE ▼") ? "▶ BACKUP / RESTORE ◀" : "▼ BACKUP / RESTORE ▼";
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private async void settingsButton_Click(object sender, EventArgs e)
         {
+            // Add smooth button press animation
+            if (sender is Control button)
+            {
+                _ = AnimationHelper.ButtonPressAsync(button);
+            }
+            
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.Show(Program.form);
         }
 
-        private void aboutBtn_Click(object sender, EventArgs e)
+        private async void aboutBtn_Click(object sender, EventArgs e)
         {
+            // Add smooth button press animation
+            if (sender is Control button)
+            {
+                _ = AnimationHelper.ButtonPressAsync(button);
+            }
+            
             string about = $@"Version: {Updater.LocalVersion}
 
  - Software orignally coded by rookie.wtf
@@ -5229,6 +5271,65 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 initListView(false); 
             }
         }
+
+        #region Modern Button Hover Effects
+        private void AddModernHoverEffects()
+        {
+            // Add hover effects to navigation buttons
+            AddButtonHoverEffect(settingsButton);
+            AddButtonHoverEffect(aboutBtn);
+            AddButtonHoverEffect(QuestOptionsButton);
+            AddButtonHoverEffect(pullAppToDesktopBtn);
+            AddButtonHoverEffect(uninstallAppButton);
+            AddButtonHoverEffect(copyBulkObbButton);
+            AddButtonHoverEffect(listApkButton);
+            AddButtonHoverEffect(UpdateGamesButton);
+            AddButtonHoverEffect(ADBWirelessEnable);
+            AddButtonHoverEffect(ADBWirelessDisable);
+            
+            // Add hover effects to additional buttons
+            AddButtonHoverEffect(devicesbutton);
+            AddButtonHoverEffect(startsideloadbutton);
+            AddButtonHoverEffect(getApkButton);
+            AddButtonHoverEffect(obbcopybutton);
+            AddButtonHoverEffect(backupadbbutton);
+            AddButtonHoverEffect(backupbutton);
+            AddButtonHoverEffect(restorebutton);
+            AddButtonHoverEffect(btnOpenDownloads);
+            AddButtonHoverEffect(btnRunAdbCmd);
+            
+            // Add hover effects to dropdown buttons
+            AddButtonHoverEffect(deviceDrop);
+            AddButtonHoverEffect(sideloadDrop);
+            AddButtonHoverEffect(installedAppsMenu);
+            AddButtonHoverEffect(backupDrop);
+            AddButtonHoverEffect(otherDrop);
+        }
+
+        private void AddButtonHoverEffect(System.Windows.Forms.Button button)
+        {
+            Color originalColor = button.BackColor;
+            Color hoverColor = LightenColor(originalColor, 0.15f);
+            
+            button.MouseEnter += (sender, e) => {
+                button.BackColor = hoverColor;
+                button.Cursor = Cursors.Hand;
+            };
+            
+            button.MouseLeave += (sender, e) => {
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            };
+        }
+
+        private Color LightenColor(Color color, float factor)
+        {
+            int r = Math.Min(255, (int)(color.R + (255 - color.R) * factor));
+            int g = Math.Min(255, (int)(color.G + (255 - color.G) * factor));
+            int b = Math.Min(255, (int)(color.B + (255 - color.B) * factor));
+            return Color.FromArgb(color.A, r, g, b);
+        }
+        #endregion
     }
 
     public static class ControlExtensions

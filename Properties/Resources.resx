@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -147,5 +147,17 @@
   </data>
   <data name="splashimage_offline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\splashimage_offline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="battery_modern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\battery_modern.svg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="search_modern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search_modern.svg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="loading_modern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading_modern.svg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="pattern_modern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pattern_modern.svg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

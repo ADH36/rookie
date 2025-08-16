@@ -1,0 +1,71 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2196F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#64B5F6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f9fa;stop-opacity:0.9" />
+    </linearGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#backgroundGradient)"/>
+  
+  <!-- Subtle pattern overlay -->
+  <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="1" fill="#ffffff" opacity="0.1"/>
+  </pattern>
+  <rect width="400" height="300" fill="url(#dots)"/>
+  
+  <!-- Main logo/icon area -->
+  <g transform="translate(200, 120)">
+    <!-- Android-style robot silhouette -->
+    <g fill="url(#logoGradient)" filter="url(#glow)">
+      <!-- Head -->
+      <rect x="-25" y="-30" width="50" height="35" rx="25" ry="17"/>
+      <!-- Eyes -->
+      <circle cx="-12" cy="-20" r="3" fill="#1976D2"/>
+      <circle cx="12" cy="-20" r="3" fill="#1976D2"/>
+      <!-- Antennae -->
+      <line x1="-15" y1="-35" x2="-20" y2="-45" stroke="url(#logoGradient)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="15" y1="-35" x2="20" y2="-45" stroke="url(#logoGradient)" stroke-width="3" stroke-linecap="round"/>
+      <!-- Body -->
+      <rect x="-20" y="5" width="40" height="45" rx="5" ry="5"/>
+      <!-- Arms -->
+      <rect x="-35" y="10" width="10" height="25" rx="5" ry="5"/>
+      <rect x="25" y="10" width="10" height="25" rx="5" ry="5"/>
+      <!-- Legs -->
+      <rect x="-15" y="55" width="8" height="20" rx="4" ry="4"/>
+      <rect x="7" y="55" width="8" height="20" rx="4" ry="4"/>
+    </g>
+  </g>
+  
+  <!-- App title -->
+  <text x="200" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="300" fill="#ffffff" filter="url(#glow)">
+    Android Sideloader
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="245" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="300" fill="#ffffff" opacity="0.8">
+    Modern UI Experience
+  </text>
+  
+  <!-- Loading indicator -->
+  <g transform="translate(200, 270)">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-dasharray="12 38" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
