@@ -1,0 +1,100 @@
+{
+  "FontStyle": {
+    "FontFamily": "Microsoft Sans Serif",
+    "Size": 11.25
+  },
+  "BigFontStyle": {
+    "FontFamily": "Microsoft Sans Serif",
+    "Size": 14.0
+  },
+  "FontColor": {
+    "A": 255,
+    "R": 255,
+    "G": 255,
+    "B": 255
+  },
+  "ComboBoxColor": {
+    "A": 255,
+    "R": 25,
+    "G": 25,
+    "B": 25
+  },
+  "SubButtonColor": {
+    "A": 255,
+    "R": 25,
+    "G": 25,
+    "B": 25
+  },
+  "TextBoxColor": {
+    "A": 255,
+    "R": 25,
+    "G": 25,
+    "B": 25
+  },
+  "ButtonColor": {
+    "A": 255,
+    "R": 0,
+    "G": 0,
+    "B": 0
+  },
+  "BackColor": {
+    "A": 255,
+    "R": 1,
+    "G": 1,
+    "B": 1
+  },
+  "CheckForUpdates": true,
+  "EnableMessageBoxes": true,
+  "FirstRun": true,
+  "DeleteAllAfterInstall": true,
+  "AutoUpdateConfig": true,
+  "UserJsonOnGameInstall": false,
+  "CallUpgrade": true,
+  "BackPicturePath": "",
+  "SpoofGames": false,
+  "ResignAPKs": false,
+  "IPAddress": "",
+  "InstalledApps": "",
+  "ADBPath": "C:\\RSL\\platform-tools\\adb.exe",
+  "MainDir": "E:\\rookie\\rookie",
+  "Delsh": false,
+  "CurrPckg": "",
+  "ADBFolder": "C:\\RSL\\platform-tools",
+  "WirelessADB": false,
+  "CurrentGamename": "",
+  "PackageNameToCB": false,
+  "DownUpHeld": false,
+  "CurrentLogPath": "E:\\rookie\\rookie\\debuglog.txt",
+  "CurrentLogName": "",
+  "CurrentCrashPath": "",
+  "CurrentCrashName": "",
+  "AdbDebugWarned": false,
+  "NodeviceMode": false,
+  "BMBFChecked": true,
+  "GamesList": "",
+  "UploadedGameList": false,
+  "GlobalUsername": "",
+  "LastTimeShared": "1969-04-20T16:20:00",
+  "AutoReinstall": false,
+  "NonAppPackages": "",
+  "LastLaunch": "2025-08-16T21:47:50.8522077+05:30",
+  "SubmittedUpdates": "",
+  "ListUpped": false,
+  "LastLaunch2": "2025-08-16T21:47:50.8563915+05:30",
+  "Wired": false,
+  "AppPackages": "",
+  "TrailersOn": false,
+  "DownloadDir": "E:\\rookie\\rookie",
+  "CustomDownloadDir": false,
+  "CustomBackupDir": false,
+  "BackupDir": "",
+  "SingleThreadMode": true,
+  "VirtualFilesystemCompatibility": false,
+  "UpdateSettings": true,
+  "UUID": "f62de7c2-3ccf-4ed3-b44b-12f9ccd2895e",
+  "CreatePubMirrorFile": true,
+  "UseDownloadedFiles": false,
+  "BandwidthLimit": 0.0,
+  "HideAdultContent": false,
+  "FavoritedGames": []
+}

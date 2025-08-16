@@ -402,7 +402,7 @@ namespace AndroidSideloader
             foreach (string file in files)
             {
                 FileInfo fileInfo = new FileInfo(file);
-                string relativePath = Path.GetRelativePath(sourceDir, file);
+                string relativePath = file.Substring(sourceDir.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
                 string fileName = Path.GetFileName(file);
                 
                 progressCallback?.Invoke(bytesTransferred, totalSize, fileName);

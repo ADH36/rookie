@@ -1401,7 +1401,7 @@ namespace AndroidSideloader
                             double etaSeconds = remainingBytes / speed;
                             
                             if (etaSeconds > 60)
-                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                        etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
                             else
                                 etaText = $"ETA: {etaSeconds:F0}s";
                         }
@@ -1650,7 +1650,7 @@ namespace AndroidSideloader
                                                 double etaSeconds = remainingBytes / speed;
                                                 
                                                 if (etaSeconds > 60)
-                                                    etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                        etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
                                                 else
                                                     etaText = $"ETA: {etaSeconds:F0}s";
                                             }
@@ -1909,7 +1909,7 @@ namespace AndroidSideloader
                                             double etaSeconds = remainingBytes / speed;
                                             
                                             if (etaSeconds > 60)
-                                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                        etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
                                             else
                                                 etaText = $"ETA: {etaSeconds:F0}s";
                                         }
@@ -3481,7 +3481,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                                         double etaSeconds = remainingBytes / speed;
                                                         
                                                         if (etaSeconds > 60)
-                                                            etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                            etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
                                                         else
                                                             etaText = $"ETA: {etaSeconds:F0}s";
                                                     }
@@ -3701,7 +3701,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                             double etaSeconds = remainingBytes / speed;
                             
                             if (etaSeconds > 60)
-                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                            etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
                             else
                                 etaText = $"ETA: {etaSeconds:F0}s";
                         }

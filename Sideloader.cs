@@ -174,9 +174,10 @@ namespace AndroidSideloader
                         long fileSize = fileInfo.Length;
                         
                         // Create a wrapper callback that updates the processed size
+                        long currentProcessedSize = processedSize; // Capture current value for lambda
                         ADB.ProgressCallback fileCallback = (bytesTransferred, fileTotalBytes, currentFile) =>
                         {
-                            long currentProcessed = processedSize + bytesTransferred;
+                            long currentProcessed = currentProcessedSize + bytesTransferred;
                             progressCallback(currentProcessed, totalSize, currentFile);
                         };
                         

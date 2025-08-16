@@ -1,0 +1,4 @@
+GVR
+
+go to store page ingame click unlock all and when popup to confirm purcse shows close and it unlocks everything
+close game and restart

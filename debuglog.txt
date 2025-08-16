@@ -1,0 +1,1618 @@
+04:17:50.852 PM (UTC): [INFO] [Logger.Initialize] Logger initialized at: 09:47PM(UTC)
+04:17:50.979 PM (UTC): [INFO] [<Form1_Load>d__35.MoveNext] Starting AndroidSideloader Application
+04:17:50.979 PM (UTC): [INFO] [GetDependencies.downloadRclone] Checking for Local rclone...
+04:17:50.979 PM (UTC): [INFO] [GetDependencies.downloadRclone] RCLONE exe does not exist, attempting to download
+04:17:50.979 PM (UTC): [INFO] [GetDependencies.downloadRclone] Missing RCLONE Folder, attempting to download
+04:17:50.979 PM (UTC): [INFO] [GetDependencies.downloadRclone] Downloading rclone from https://downloads.rclone.org/v1.68.2/rclone-v1.68.2-windows-amd64.zip
+04:17:50.979 PM (UTC): [INFO] [GetDependencies.downloadRclone] Begin download rclone
+04:17:59.674 PM (UTC): [INFO] [GetDependencies.downloadRclone] Complete download rclone
+04:17:59.676 PM (UTC): [INFO] [GetDependencies.downloadRclone] Extract E:\rookie\rookie\rclone.zip
+04:17:59.676 PM (UTC): [INFO] [Zip.DoExtract] Extract: 7z x "E:\rookie\rookie\rclone.zip" -y -o"E:\rookie\rookie" -bsp1
+04:18:00.093 PM (UTC): [INFO] [GetDependencies.downloadRclone] rclone extracted. Moving files
+04:18:00.098 PM (UTC): [INFO] [GetDependencies.downloadRclone] rclone download successful
+04:18:00.099 PM (UTC): [INFO] [<Form1_Load>d__35.MoveNext] Attempting to Initalize ADB Server
+04:18:00.105 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: kill-server
+04:18:00.165 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: start-server
+04:18:05.254 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] * daemon not running; starting now at tcp:5037
+* daemon started successfully
+
+
+04:18:05.257 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Attempting to update public config from main.
+04:18:05.796 PM (UTC): [ERROR] [GetDependencies.updatePublicConfig] Failed to update public config from main: The remote server returned an error: (404) Not Found., trying fallback.
+04:18:06.901 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Retrieved updated config from fallback: https://vrpirates.wiki/downloads/vrp-public.json.
+04:18:06.901 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Public config updated successfully from fallback.
+04:18:06.925 PM (UTC): [INFO] [<Form1_Shown>d__36.MoveNext] Using Public Mirror
+04:18:07.723 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Attempting to Update Upload Config
+04:18:08.023 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Retrieved updated config from: https://vrpirates.wiki/downloads/vrp.upload.config
+04:18:08.023 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Upload config updated successfully.
+04:18:08.023 PM (UTC): [INFO] [<Form1_Shown>d__36.MoveNext] Initializing Servers
+04:18:08.029 PM (UTC): [INFO] [<initMirrors>d__83.MoveNext] Looking for Additional Mirrors...
+04:18:08.029 PM (UTC): [INFO] [RCLONE.runRcloneCommand_DownloadConfig] Running Rclone command: listremotes --config vrp.download.config --inplace
+04:18:08.931 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_DownloadConfig] Rclone error: 2025/08/16 21:48:08 NOTICE: Config file "E:\\rookie\\rookie\\rclone\\vrp.download.config" not found - using defaults
+
+
+
+04:18:08.931 PM (UTC): [INFO] [<initMirrors>d__83.MoveNext] Loaded following mirrors: 
+04:18:08.950 PM (UTC): [INFO] [SideloaderRCLONE.UpdateMetadataFromPublic] Downloading Metadata
+04:18:08.954 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Running Rclone command: sync ":http:/meta.7z" "CurrentDirectory"
+04:18:11.850 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_PublicConfig] Rclone error: 2025/08/16 21:48:09 NOTICE: Config file "C:\\Users\\amrit\\AppData\\Roaming\\rclone\\rclone.conf" not found - using defaults
+
+
+
+04:18:11.852 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Extracting Metadata
+04:18:11.852 PM (UTC): [INFO] [Zip.DoExtract] Extract: 7z x "E:\rookie\rookie\meta.7z" -y -o"E:\rookie\rookie\meta" -bsp1
+04:18:14.046 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Updating Metadata
+04:18:14.046 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Initializing Games List
+04:18:14.057 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: devices
+04:18:14.084 PM (UTC): [INFO] [ADB.RunAdbCommandToString] List of devices attached
+2G0YC5ZH1402GB	unauthorized
+
+
+
+04:18:14.181 PM (UTC): [INFO] [<CheckForDevice>d__44.MoveNext] Devices:
+04:18:14.181 PM (UTC): [INFO] [<CheckForDevice>d__44.MoveNext] 2G0YC5ZH1402GB
+
+04:18:14.184 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell df
+04:18:16.227 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+
+04:18:17.055 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+
+04:18:17.917 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+
+04:18:17.917 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell df
+04:18:18.351 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+
+04:18:21.215 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell svc usb setFunctions mtp true
+04:18:22.576 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+
+
+04:18:33.715 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell svc usb setFunctions mtp true
+04:18:35.761 PM (UTC): [INFO] [ADB.RunAdbCommandToString] setCurrentFunctions opId:1
+
+04:18:41.379 PM (UTC): [INFO] [<downloadInstallGameButton_Click>d__112.MoveNext] Starting Game Download
+04:18:41.379 PM (UTC): [INFO] [<downloadInstallGameButton_Click>d__112.MoveNext] rclone copy "Public:Quest Games/A102 v54+1.0.4 -VRP v76"
+04:18:41.383 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Running Rclone command: copy ":http:/469306caf1c96497f24dd44134012f7e/" "CurrentDirectory\469306caf1c96497f24dd44134012f7e" --transfers 1 --multi-thread-streams 0 --progress --rc 
+04:18:42.880 PM (UTC): [INFO] [<CountDownload>d__0.MoveNext] {"status":200,"message":"Records Updated Successfully"}
+04:19:24.942 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_PublicConfig] Rclone error: 2025/08/16 21:48:41 NOTICE: Serving remote control on http://127.0.0.1:5572/
+2025/08/16 21:48:41 NOTICE: Config file "C:\\Users\\amrit\\AppData\\Roaming\\rclone\\rclone.conf" not found - using defaults
+
+
+
+04:19:24.942 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Rclone Output: Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         0.5sTransferred:   	          0 B / 403.482 MiB, 0%, 0 B/s, ETA -
+Transferred:            0 / 2, 0%
+Elapsed time:         1.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: transferringTransferred:   	          0 B / 403.482 MiB, 0%, 0 B/s, ETA -
+Transferred:            0 / 2, 0%
+Elapsed time:         1.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: transferringTransferred:   	      124 KiB / 903.482 MiB, 0%, 60 KiB/s, ETA 4h16m57s
+Transferred:            0 / 2, 0%
+Elapsed time:         2.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001:  0% /500Mi, 0/s, -Transferred:   	     1020 KiB / 903.482 MiB, 0%, 60 KiB/s, ETA 4h16m42s
+Transferred:            0 / 2, 0%
+Elapsed time:         2.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001:  0% /500Mi, 0/s, -Transferred:   	    8.996 MiB / 903.482 MiB, 1%, 2.498 MiB/s, ETA 5m58s
+Transferred:            0 / 2, 0%
+Elapsed time:         3.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001:  1% /500Mi, 1.996Mi/s, 4m5sTransferred:   	   19.996 MiB / 903.482 MiB, 2%, 2.498 MiB/s, ETA 5m53s
+Transferred:            0 / 2, 0%
+Elapsed time:         3.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001:  3% /500Mi, 1.996Mi/s, 4m0sTransferred:   	   35.996 MiB / 903.482 MiB, 4%, 10.665 MiB/s, ETA 1m21s
+Transferred:            0 / 2, 0%
+Elapsed time:         4.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001:  7% /500Mi, 13.498Mi/s, 34sTransferred:   	   45.996 MiB / 903.482 MiB, 5%, 10.665 MiB/s, ETA 1m20s
+Transferred:            0 / 2, 0%
+Elapsed time:         4.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001:  9% /500Mi, 13.498Mi/s, 33sTransferred:   	   60.996 MiB / 903.482 MiB, 7%, 14.999 MiB/s, ETA 56s
+Transferred:            0 / 2, 0%
+Elapsed time:         5.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 12% /500Mi, 17.665Mi/s, 24sTransferred:   	   74.996 MiB / 903.482 MiB, 8%, 14.999 MiB/s, ETA 55s
+Transferred:            0 / 2, 0%
+Elapsed time:         5.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 14% /500Mi, 17.665Mi/s, 24sTransferred:   	   85.996 MiB / 903.482 MiB, 10%, 16.199 MiB/s, ETA 50s
+Transferred:            0 / 2, 0%
+Elapsed time:         6.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 17% /500Mi, 19.499Mi/s, 21sTransferred:   	   97.996 MiB / 903.482 MiB, 11%, 16.199 MiB/s, ETA 49s
+Transferred:            0 / 2, 0%
+Elapsed time:         6.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 19% /500Mi, 19.499Mi/s, 20sTransferred:   	  111.996 MiB / 903.482 MiB, 12%, 17.833 MiB/s, ETA 44s
+Transferred:            0 / 2, 0%
+Elapsed time:         7.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 22% /500Mi, 20.399Mi/s, 19sTransferred:   	  124.996 MiB / 903.482 MiB, 14%, 17.833 MiB/s, ETA 43s
+Transferred:            0 / 2, 0%
+Elapsed time:         7.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 24% /500Mi, 20.399Mi/s, 18sTransferred:   	  125.996 MiB / 903.482 MiB, 14%, 17.999 MiB/s, ETA 43s
+Transferred:            0 / 2, 0%
+Elapsed time:         8.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 25% /500Mi, 20.999Mi/s, 17sTransferred:   	  140.996 MiB / 903.482 MiB, 16%, 17.999 MiB/s, ETA 42s
+Transferred:            0 / 2, 0%
+Elapsed time:         8.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 28% /500Mi, 20.999Mi/s, 17sTransferred:   	  149.996 MiB / 903.482 MiB, 17%, 18.250 MiB/s, ETA 41s
+Transferred:            0 / 2, 0%
+Elapsed time:         9.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 29% /500Mi, 20.714Mi/s, 16sTransferred:   	  160.996 MiB / 903.482 MiB, 18%, 18.250 MiB/s, ETA 40s
+Transferred:            0 / 2, 0%
+Elapsed time:         9.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 32% /500Mi, 20.714Mi/s, 16sTransferred:   	  172.996 MiB / 903.482 MiB, 19%, 19.000 MiB/s, ETA 38s
+Transferred:            0 / 2, 0%
+Elapsed time:        10.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 34% /500Mi, 20.750Mi/s, 15sTransferred:   	  184.996 MiB / 903.482 MiB, 20%, 19.000 MiB/s, ETA 37s
+Transferred:            0 / 2, 0%
+Elapsed time:        10.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 36% /500Mi, 20.750Mi/s, 15sTransferred:   	  195.996 MiB / 903.482 MiB, 22%, 19.100 MiB/s, ETA 37s
+Transferred:            0 / 2, 0%
+Elapsed time:        11.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 39% /500Mi, 20.777Mi/s, 14sTransferred:   	  205.996 MiB / 903.482 MiB, 23%, 19.100 MiB/s, ETA 36s
+Transferred:            0 / 2, 0%
+Elapsed time:        11.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 41% /500Mi, 20.777Mi/s, 14sTransferred:   	  218.996 MiB / 903.482 MiB, 24%, 19.545 MiB/s, ETA 35s
+Transferred:            0 / 2, 0%
+Elapsed time:        12.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 43% /500Mi, 21.100Mi/s, 13sTransferred:   	  227.996 MiB / 903.482 MiB, 25%, 19.545 MiB/s, ETA 34s
+Transferred:            0 / 2, 0%
+Elapsed time:        12.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 45% /500Mi, 21.100Mi/s, 12sTransferred:   	  241.996 MiB / 903.482 MiB, 27%, 19.916 MiB/s, ETA 33s
+Transferred:            0 / 2, 0%
+Elapsed time:        13.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 48% /500Mi, 21.181Mi/s, 12sTransferred:   	  253.996 MiB / 903.482 MiB, 28%, 19.916 MiB/s, ETA 32s
+Transferred:            0 / 2, 0%
+Elapsed time:        13.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 50% /500Mi, 21.181Mi/s, 11sTransferred:   	  263.996 MiB / 903.482 MiB, 29%, 20.000 MiB/s, ETA 31s
+Transferred:            0 / 2, 0%
+Elapsed time:        14.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 52% /500Mi, 21.500Mi/s, 10sTransferred:   	  272.996 MiB / 903.482 MiB, 30%, 20.000 MiB/s, ETA 31s
+Transferred:            0 / 2, 0%
+Elapsed time:        14.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 54% /500Mi, 21.500Mi/s, 10sTransferred:   	  286.996 MiB / 903.482 MiB, 32%, 20.214 MiB/s, ETA 30s
+Transferred:            0 / 2, 0%
+Elapsed time:        15.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 57% /500Mi, 21.384Mi/s, 9sTransferred:   	  296.996 MiB / 903.482 MiB, 33%, 20.214 MiB/s, ETA 30s
+Transferred:            0 / 2, 0%
+Elapsed time:        15.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 59% /500Mi, 21.384Mi/s, 9sTransferred:   	  308.996 MiB / 903.482 MiB, 34%, 20.266 MiB/s, ETA 29s
+Transferred:            0 / 2, 0%
+Elapsed time:        16.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 61% /500Mi, 21.357Mi/s, 8sTransferred:   	  321.996 MiB / 903.482 MiB, 36%, 20.266 MiB/s, ETA 28s
+Transferred:            0 / 2, 0%
+Elapsed time:        16.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 64% /500Mi, 21.357Mi/s, 8sTransferred:   	  335.996 MiB / 903.482 MiB, 37%, 20.687 MiB/s, ETA 27s
+Transferred:            0 / 2, 0%
+Elapsed time:        17.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 67% /500Mi, 21.866Mi/s, 7sTransferred:   	  349.996 MiB / 903.482 MiB, 39%, 20.687 MiB/s, ETA 26s
+Transferred:            0 / 2, 0%
+Elapsed time:        17.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 69% /500Mi, 21.866Mi/s, 6sTransferred:   	  362.996 MiB / 903.482 MiB, 40%, 21.207 MiB/s, ETA 25s
+Transferred:            0 / 2, 0%
+Elapsed time:        18.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 72% /500Mi, 22.125Mi/s, 6sTransferred:   	  373.996 MiB / 903.482 MiB, 41%, 21.207 MiB/s, ETA 24s
+Transferred:            0 / 2, 0%
+Elapsed time:        18.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 74% /500Mi, 22.125Mi/s, 5sTransferred:   	  387.996 MiB / 903.482 MiB, 43%, 21.444 MiB/s, ETA 24s
+Transferred:            0 / 2, 0%
+Elapsed time:        19.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 77% /500Mi, 22.304Mi/s, 5sTransferred:   	  397.996 MiB / 903.482 MiB, 44%, 21.444 MiB/s, ETA 23s
+Transferred:            0 / 2, 0%
+Elapsed time:        19.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 79% /500Mi, 22.304Mi/s, 4sTransferred:   	  409.996 MiB / 903.482 MiB, 45%, 21.479 MiB/s, ETA 22s
+Transferred:            0 / 2, 0%
+Elapsed time:        20.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 81% /500Mi, 22.410Mi/s, 4sTransferred:   	  422.996 MiB / 903.482 MiB, 47%, 21.479 MiB/s, ETA 22s
+Transferred:            0 / 2, 0%
+Elapsed time:        20.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 84% /500Mi, 22.410Mi/s, 3sTransferred:   	  432.996 MiB / 903.482 MiB, 48%, 21.449 MiB/s, ETA 21s
+Transferred:            0 / 2, 0%
+Elapsed time:        21.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 86% /500Mi, 22.510Mi/s, 2sTransferred:   	  441.996 MiB / 903.482 MiB, 49%, 21.449 MiB/s, ETA 21s
+Transferred:            0 / 2, 0%
+Elapsed time:        21.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 88% /500Mi, 22.510Mi/s, 2sTransferred:   	  454.996 MiB / 903.482 MiB, 50%, 21.546 MiB/s, ETA 20s
+Transferred:            0 / 2, 0%
+Elapsed time:        22.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 90% /500Mi, 22.353Mi/s, 2sTransferred:   	  464.996 MiB / 903.482 MiB, 51%, 21.546 MiB/s, ETA 20s
+Transferred:            0 / 2, 0%
+Elapsed time:        22.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 92% /500Mi, 22.353Mi/s, 1sTransferred:   	  477.996 MiB / 903.482 MiB, 53%, 21.699 MiB/s, ETA 19s
+Transferred:            0 / 2, 0%
+Elapsed time:        23.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 95% /500Mi, 22.393Mi/s, 0sTransferred:   	  491.996 MiB / 903.482 MiB, 54%, 21.699 MiB/s, ETA 18s
+Transferred:            0 / 2, 0%
+Elapsed time:        23.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.001: 98% /500Mi, 22.393Mi/s, 0sTransferred:   	      500 MiB / 500 MiB, 100%, 21.906 MiB/s, ETA 0s
+Transferred:            1 / 2, 50%
+Elapsed time:        24.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: transferringTransferred:   	  504.996 MiB / 903.482 MiB, 56%, 21.906 MiB/s, ETA 18s
+Transferred:            1 / 2, 50%
+Elapsed time:        24.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002:  1% /403.482Mi, 0/s, -Transferred:   	  516.996 MiB / 903.482 MiB, 57%, 21.411 MiB/s, ETA 18s
+Transferred:            1 / 2, 50%
+Elapsed time:        25.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002:  4% /403.482Mi, 0/s, -Transferred:   	  531.996 MiB / 903.482 MiB, 59%, 21.411 MiB/s, ETA 17s
+Transferred:            1 / 2, 50%
+Elapsed time:        25.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002:  7% /403.482Mi, 23.996Mi/s, 15Transferred:   	  544.996 MiB / 903.482 MiB, 60%, 21.823 MiB/s, ETA 16s
+Transferred:            1 / 2, 50%
+Elapsed time:        26.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 11% /403.482Mi, 23.996Mi/s, 14Transferred:   	  555.996 MiB / 903.482 MiB, 62%, 21.823 MiB/s, ETA 15s
+Transferred:            1 / 2, 50%
+Elapsed time:        26.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 13% /403.482Mi, 23.998Mi/s, 14Transferred:   	  567.996 MiB / 903.482 MiB, 63%, 21.834 MiB/s, ETA 15s
+Transferred:            1 / 2, 50%
+Elapsed time:        27.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 16% /403.482Mi, 23.998Mi/s, 13Transferred:   	  579.996 MiB / 903.482 MiB, 64%, 21.834 MiB/s, ETA 14s
+Transferred:            1 / 2, 50%
+Elapsed time:        27.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 19% /403.482Mi, 24.665Mi/s, 13Transferred:   	  595.996 MiB / 903.482 MiB, 66%, 22.157 MiB/s, ETA 13s
+Transferred:            1 / 2, 50%
+Elapsed time:        28.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 23% /403.482Mi, 24.665Mi/s, 12Transferred:   	  605.996 MiB / 903.482 MiB, 67%, 22.157 MiB/s, ETA 13s
+Transferred:            1 / 2, 50%
+Elapsed time:        28.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 26% /403.482Mi, 25.249Mi/s, 11Transferred:   	  615.996 MiB / 903.482 MiB, 68%, 21.960 MiB/s, ETA 13s
+Transferred:            1 / 2, 50%
+Elapsed time:        29.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 28% /403.482Mi, 25.249Mi/s, 11Transferred:   	  629.996 MiB / 903.482 MiB, 70%, 21.960 MiB/s, ETA 12s
+Transferred:            1 / 2, 50%
+Elapsed time:        29.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 32% /403.482Mi, 24.599Mi/s, 11Transferred:   	  638.996 MiB / 903.482 MiB, 71%, 22.025 MiB/s, ETA 12s
+Transferred:            1 / 2, 50%
+Elapsed time:        30.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 34% /403.482Mi, 24.599Mi/s, 10Transferred:   	  652.996 MiB / 903.482 MiB, 72%, 22.025 MiB/s, ETA 11s
+Transferred:            1 / 2, 50%
+Elapsed time:        30.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 37% /403.482Mi, 23.999Mi/s, 10Transferred:   	  661.996 MiB / 903.482 MiB, 73%, 22.148 MiB/s, ETA 10s
+Transferred:            1 / 2, 50%
+Elapsed time:        31.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 40% /403.482Mi, 23.999Mi/s, 10Transferred:   	  673.996 MiB / 903.482 MiB, 75%, 22.148 MiB/s, ETA 10s
+Transferred:            1 / 2, 50%
+Elapsed time:        31.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 43% /403.482Mi, 23.857Mi/s, 9sTransferred:   	  683.996 MiB / 903.482 MiB, 76%, 22.326 MiB/s, ETA 9s
+Transferred:            1 / 2, 50%
+Elapsed time:        32.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 45% /403.482Mi, 23.857Mi/s, 9sTransferred:   	  694.996 MiB / 903.482 MiB, 77%, 22.326 MiB/s, ETA 9s
+Transferred:            1 / 2, 50%
+Elapsed time:        32.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 48% /403.482Mi, 23.625Mi/s, 8sTransferred:   	  705.996 MiB / 903.482 MiB, 78%, 22.368 MiB/s, ETA 8s
+Transferred:            1 / 2, 50%
+Elapsed time:        33.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 51% /403.482Mi, 23.625Mi/s, 8sTransferred:   	  715.996 MiB / 903.482 MiB, 79%, 22.368 MiB/s, ETA 8s
+Transferred:            1 / 2, 50%
+Elapsed time:        33.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 53% /403.482Mi, 23.444Mi/s, 7sTransferred:   	  723.996 MiB / 903.482 MiB, 80%, 22.095 MiB/s, ETA 8s
+Transferred:            1 / 2, 50%
+Elapsed time:        34.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 55% /403.482Mi, 23.444Mi/s, 7sTransferred:   	  737.996 MiB / 903.482 MiB, 82%, 22.095 MiB/s, ETA 7s
+Transferred:            1 / 2, 50%
+Elapsed time:        34.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 58% /403.482Mi, 23.000Mi/s, 7sTransferred:   	  748.996 MiB / 903.482 MiB, 83%, 22.027 MiB/s, ETA 7s
+Transferred:            1 / 2, 50%
+Elapsed time:        35.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 61% /403.482Mi, 23.000Mi/s, 6sTransferred:   	  760.996 MiB / 903.482 MiB, 84%, 22.027 MiB/s, ETA 6s
+Transferred:            1 / 2, 50%
+Elapsed time:        35.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 64% /403.482Mi, 23.181Mi/s, 6sTransferred:   	  773.996 MiB / 903.482 MiB, 86%, 22.275 MiB/s, ETA 5s
+Transferred:            1 / 2, 50%
+Elapsed time:        36.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 67% /403.482Mi, 23.181Mi/s, 5sTransferred:   	  785.996 MiB / 903.482 MiB, 87%, 22.275 MiB/s, ETA 5s
+Transferred:            1 / 2, 50%
+Elapsed time:        36.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 70% /403.482Mi, 23.083Mi/s, 5sTransferred:   	  790.996 MiB / 903.482 MiB, 88%, 22.196 MiB/s, ETA 5s
+Transferred:            1 / 2, 50%
+Elapsed time:        37.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 72% /403.482Mi, 23.083Mi/s, 4sTransferred:   	  790.996 MiB / 903.482 MiB, 88%, 22.196 MiB/s, ETA 5s
+Transferred:            1 / 2, 50%
+Elapsed time:        37.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 72% /403.482Mi, 22.384Mi/s, 5sTransferred:   	  790.996 MiB / 903.482 MiB, 88%, 20.808 MiB/s, ETA 5s
+Transferred:            1 / 2, 50%
+Elapsed time:        38.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 72% /403.482Mi, 22.384Mi/s, 5sTransferred:   	  804.996 MiB / 903.482 MiB, 89%, 20.808 MiB/s, ETA 4s
+Transferred:            1 / 2, 50%
+Elapsed time:        38.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 75% /403.482Mi, 21.357Mi/s, 4sTransferred:   	  811.996 MiB / 903.482 MiB, 90%, 20.695 MiB/s, ETA 4s
+Transferred:            1 / 2, 50%
+Elapsed time:        39.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 77% /403.482Mi, 21.357Mi/s, 4sTransferred:   	  817.996 MiB / 903.482 MiB, 91%, 20.695 MiB/s, ETA 4s
+Transferred:            1 / 2, 50%
+Elapsed time:        39.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 78% /403.482Mi, 20.933Mi/s, 4sTransferred:   	  830.996 MiB / 903.482 MiB, 92%, 20.339 MiB/s, ETA 3s
+Transferred:            1 / 2, 50%
+Elapsed time:        40.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 82% /403.482Mi, 20.933Mi/s, 3sTransferred:   	  840.996 MiB / 903.482 MiB, 93%, 20.339 MiB/s, ETA 3s
+Transferred:            1 / 2, 50%
+Elapsed time:        40.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 84% /403.482Mi, 20.937Mi/s, 2sTransferred:   	  850.996 MiB / 903.482 MiB, 94%, 20.506 MiB/s, ETA 2s
+Transferred:            1 / 2, 50%
+Elapsed time:        41.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 86% /403.482Mi, 20.937Mi/s, 2sTransferred:   	  858.996 MiB / 903.482 MiB, 95%, 20.506 MiB/s, ETA 2s
+Transferred:            1 / 2, 50%
+Elapsed time:        41.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 88% /403.482Mi, 20.691Mi/s, 2sTransferred:   	  871.996 MiB / 903.482 MiB, 97%, 20.412 MiB/s, ETA 1s
+Transferred:            1 / 2, 50%
+Elapsed time:        42.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 92% /403.482Mi, 20.691Mi/s, 1sTransferred:   	  883.996 MiB / 903.482 MiB, 98%, 20.412 MiB/s, ETA 0s
+Transferred:            1 / 2, 50%
+Elapsed time:        42.5s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 95% /403.482Mi, 21.085Mi/s, 0sTransferred:   	  893.996 MiB / 903.482 MiB, 99%, 20.698 MiB/s, ETA 0s
+Transferred:            1 / 2, 50%
+Elapsed time:        43.0s
+Transferring:
+ *       469306caf1c96497f24dd44134012f7e.7z.002: 97% /403.482Mi, 21.085Mi/s, 0sTransferred:   	  903.482 MiB / 903.482 MiB, 100%, 20.698 MiB/s, ETA 0s
+Transferred:            2 / 2, 100%
+Elapsed time:        43.4s
+
+
+04:19:25.023 PM (UTC): [INFO] [Zip.DoExtract] Extract: 7z x "E:\rookie\rookie\469306caf1c96497f24dd44134012f7e\469306caf1c96497f24dd44134012f7e.7z.001" -y -o"E:\rookie\rookie" -bsp1
+04:19:29.560 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB install -g "CurrentDirectory\A102 v54+1.0.4 -VRP v76\red.chesco.a102.apk"
+04:20:10.962 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Performing Streamed Install
+Success
+
+04:20:11.157 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell df
+04:20:11.522 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.truantpixel.twomdquest from 0 to 300027
+04:20:11.522 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game 2MD- VR Football Unleashed ALLSTAR; cloudversion=300027 localversion=300027
+04:20:11.572 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for red.chesco.a102 from 0 to 54
+04:20:11.572 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game A102; cloudversion=54 localversion=54
+04:20:11.623 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.MyDearest.Altdeus from 0 to 538
+04:20:11.623 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game ALTDEUS- Beyond Chronos; cloudversion=538 localversion=538
+04:20:11.673 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.Sanzaru.Wrath2 from 0 to 5513
+04:20:11.673 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Asgards Wrath 2; cloudversion=5513 localversion=5513
+04:20:11.717 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.Sanzaru.Wrath2 from 0 to 5513
+04:20:11.717 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Asgards Wrath 2 (Language Packs Only); cloudversion=5513 localversion=5513
+04:20:11.764 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.camouflaj.manta from 0 to 350947
+04:20:11.764 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Batman- Arkham Shadow (Inc Lang Packs); cloudversion=350947 localversion=350947
+04:20:11.817 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:11.821 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber; cloudversion=1743 localversion=1743
+04:20:11.857 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:11.857 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber (Quest 1); cloudversion=1743 localversion=1743
+04:20:11.905 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:11.905 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber (Quest 1); cloudversion=1743 localversion=1743
+04:20:11.952 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:11.952 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber (Quest 1); cloudversion=1743 localversion=1743
+04:20:11.987 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:11.987 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.28.0; cloudversion=1743 localversion=1743
+04:20:12.036 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:12.036 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.35.0; cloudversion=1743 localversion=1743
+04:20:12.082 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:12.082 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.37.0; cloudversion=1743 localversion=1743
+04:20:12.125 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:20:12.125 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.40.4; cloudversion=1743 localversion=1743
+04:20:12.184 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.AnthonyStudios.GunWorldVR from 0 to 394
+04:20:12.184 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Gun World VR; cloudversion=394 localversion=394
+04:20:12.236 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.owlchemylabs.jobsimulator from 0 to 45
+04:20:12.236 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Job Simulator; cloudversion=45 localversion=45
+04:20:12.281 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.owlchemylabs.jobsimulator from 0 to 45
+04:20:12.281 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Job Simulator (Quest 1); cloudversion=45 localversion=45
+04:20:12.336 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.Armature.VR4 from 0 to 203
+04:20:12.336 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Resident Evil 4; cloudversion=203 localversion=203
+04:20:12.399 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for co.spl.wwz_vr from 0 to 3068
+04:20:12.399 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game World War Z VR; cloudversion=3068 localversion=3068
+04:20:28.210 PM (UTC): [INFO] [<downloadInstallGameButton_Click>d__112.MoveNext] Starting Game Download
+04:20:28.210 PM (UTC): [INFO] [<downloadInstallGameButton_Click>d__112.MoveNext] rclone copy "Public:Quest Games/Airport Ground Handling Simulator VR v25+1.4.3 - 2023-04-14_17-33 - 16fe2009 -VRP v76"
+04:20:28.210 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Running Rclone command: copy ":http:/0e4c961b752ced2a7b8b07253d209614/" "CurrentDirectory\0e4c961b752ced2a7b8b07253d209614" --transfers 1 --multi-thread-streams 0 --progress --rc 
+04:20:29.543 PM (UTC): [INFO] [<CountDownload>d__0.MoveNext] {"status":200,"message":"Records Updated Successfully"}
+04:21:05.749 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_PublicConfig] Rclone error: 2025/08/16 21:50:28 NOTICE: Serving remote control on http://127.0.0.1:5572/
+2025/08/16 21:50:28 NOTICE: Config file "C:\\Users\\amrit\\AppData\\Roaming\\rclone\\rclone.conf" not found - using defaults
+
+
+
+04:21:05.749 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Rclone Output: Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         0.5sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.0sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.5sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         2.0sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         2.5sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         3.0sTransferred:   	          0 B / 1.537 GiB, 0%, 0 B/s, ETA -
+Transferred:            0 / 5, 0%
+Elapsed time:         3.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: transferringTransferred:   	          0 B / 1.537 GiB, 0%, 0 B/s, ETA -
+Transferred:            0 / 5, 0%
+Elapsed time:         4.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: transferringTransferred:   	          0 B / 2.025 GiB, 0%, 0 B/s, ETA -
+Transferred:            0 / 5, 0%
+Elapsed time:         4.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 0/s, -Transferred:   	       60 KiB / 2.025 GiB, 0%, 0 B/s, ETA -
+Transferred:            0 / 5, 0%
+Elapsed time:         5.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 0/s, -Transferred:   	       60 KiB / 2.025 GiB, 0%, 30 KiB/s, ETA 19h39m29s
+Transferred:            0 / 5, 0%
+Elapsed time:         5.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 60Ki/s, 2h22m12sTransferred:   	      124 KiB / 2.025 GiB, 0%, 30 KiB/s, ETA 19h39m27s
+Transferred:            0 / 5, 0%
+Elapsed time:         6.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 60Ki/s, 2h22m11sTransferred:   	      124 KiB / 2.025 GiB, 0%, 41.333 KiB/s, ETA 14h16m3s
+Transferred:            0 / 5, 0%
+Elapsed time:         6.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 62Ki/s, 2h17m36sTransferred:   	      252 KiB / 2.025 GiB, 0%, 41.333 KiB/s, ETA 14h16m
+Transferred:            0 / 5, 0%
+Elapsed time:         7.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 62Ki/s, 2h17m34sTransferred:   	      252 KiB / 2.025 GiB, 0%, 63 KiB/s, ETA 9h21m36s
+Transferred:            0 / 5, 0%
+Elapsed time:         7.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 84Ki/s, 1h41m32sTransferred:   	      252 KiB / 2.025 GiB, 0%, 63 KiB/s, ETA 9h21m36s
+Transferred:            0 / 5, 0%
+Elapsed time:         8.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 84Ki/s, 1h41m32sTransferred:   	      252 KiB / 2.025 GiB, 0%, 50.399 KiB/s, ETA 11h42m
+Transferred:            0 / 5, 0%
+Elapsed time:         8.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 63Ki/s, 2h15m22sTransferred:   	      252 KiB / 2.025 GiB, 0%, 50.399 KiB/s, ETA 11h42m
+Transferred:            0 / 5, 0%
+Elapsed time:         9.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 63Ki/s, 2h15m22sTransferred:   	      252 KiB / 2.025 GiB, 0%, 42 KiB/s, ETA 14h2m24s
+Transferred:            0 / 5, 0%
+Elapsed time:         9.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 50.399Ki/s, 2h49m1Transferred:   	      252 KiB / 2.025 GiB, 0%, 42 KiB/s, ETA 14h2m24s
+Transferred:            0 / 5, 0%
+Elapsed time:        10.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 50.399Ki/s, 2h49m1Transferred:   	      508 KiB / 2.025 GiB, 0%, 72.571 KiB/s, ETA 8h7m28s
+Transferred:            0 / 5, 0%
+Elapsed time:        10.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 84.666Ki/s, 1h40m4Transferred:   	      508 KiB / 2.025 GiB, 0%, 72.571 KiB/s, ETA 8h7m28s
+Transferred:            0 / 5, 0%
+Elapsed time:        11.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 84.666Ki/s, 1h40m4Transferred:   	      508 KiB / 2.025 GiB, 0%, 63.500 KiB/s, ETA 9h17m7s
+Transferred:            0 / 5, 0%
+Elapsed time:        11.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 72.571Ki/s, 1h57m2Transferred:   	      508 KiB / 2.025 GiB, 0%, 63.500 KiB/s, ETA 9h17m7s
+Transferred:            0 / 5, 0%
+Elapsed time:        12.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 72.571Ki/s, 1h57m2Transferred:   	      508 KiB / 2.025 GiB, 0%, 56.444 KiB/s, ETA 10h26m45s
+Transferred:            0 / 5, 0%
+Elapsed time:        12.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 63.500Ki/s, 2h14m1Transferred:   	      508 KiB / 2.025 GiB, 0%, 56.444 KiB/s, ETA 10h26m45s
+Transferred:            0 / 5, 0%
+Elapsed time:        13.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 63.500Ki/s, 2h14m1Transferred:   	      508 KiB / 2.025 GiB, 0%, 50.800 KiB/s, ETA 11h36m24s
+Transferred:            0 / 5, 0%
+Elapsed time:        13.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 56.444Ki/s, 2h31m1Transferred:   	      508 KiB / 2.025 GiB, 0%, 50.800 KiB/s, ETA 11h36m24s
+Transferred:            0 / 5, 0%
+Elapsed time:        14.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 56.444Ki/s, 2h31m1Transferred:   	      508 KiB / 2.025 GiB, 0%, 46.182 KiB/s, ETA 12h46m2s
+Transferred:            0 / 5, 0%
+Elapsed time:        14.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 50.800Ki/s, 2h47m4Transferred:   	      508 KiB / 2.025 GiB, 0%, 46.182 KiB/s, ETA 12h46m2s
+Transferred:            0 / 5, 0%
+Elapsed time:        15.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 50.800Ki/s, 2h47m4Transferred:   	      508 KiB / 2.025 GiB, 0%, 42.333 KiB/s, ETA 13h55m40s
+Transferred:            0 / 5, 0%
+Elapsed time:        15.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 46.182Ki/s, 3h4m35Transferred:   	      508 KiB / 2.025 GiB, 0%, 42.333 KiB/s, ETA 13h55m40s
+Transferred:            0 / 5, 0%
+Elapsed time:        16.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 46.182Ki/s, 3h4m35Transferred:   	      508 KiB / 2.025 GiB, 0%, 39.076 KiB/s, ETA 15h5m19s
+Transferred:            0 / 5, 0%
+Elapsed time:        16.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 42.333Ki/s, 3h21m2Transferred:   	      508 KiB / 2.025 GiB, 0%, 39.076 KiB/s, ETA 15h5m19s
+Transferred:            0 / 5, 0%
+Elapsed time:        17.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 42.333Ki/s, 3h21m2Transferred:   	      508 KiB / 2.025 GiB, 0%, 36.285 KiB/s, ETA 16h14m57s
+Transferred:            0 / 5, 0%
+Elapsed time:        17.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 39.076Ki/s, 3h38m9Transferred:   	      508 KiB / 2.025 GiB, 0%, 36.285 KiB/s, ETA 16h14m57s
+Transferred:            0 / 5, 0%
+Elapsed time:        18.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 39.076Ki/s, 3h38m9Transferred:   	      508 KiB / 2.025 GiB, 0%, 33.866 KiB/s, ETA 17h24m36s
+Transferred:            0 / 5, 0%
+Elapsed time:        18.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 36.285Ki/s, 3h54m5Transferred:   	      508 KiB / 2.025 GiB, 0%, 33.866 KiB/s, ETA 17h24m36s
+Transferred:            0 / 5, 0%
+Elapsed time:        19.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 36.285Ki/s, 3h54m5Transferred:   	      508 KiB / 2.025 GiB, 0%, 31.750 KiB/s, ETA 18h34m14s
+Transferred:            0 / 5, 0%
+Elapsed time:        19.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 33.866Ki/s, 4h11m4Transferred:   	      508 KiB / 2.025 GiB, 0%, 31.750 KiB/s, ETA 18h34m14s
+Transferred:            0 / 5, 0%
+Elapsed time:        20.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 33.866Ki/s, 4h11m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 61.766 KiB/s, ETA 9h32m37s
+Transferred:            0 / 5, 0%
+Elapsed time:        20.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 63.750Ki/s, 2h13m3Transferred:   	     1020 KiB / 2.025 GiB, 0%, 61.766 KiB/s, ETA 9h32m37s
+Transferred:            0 / 5, 0%
+Elapsed time:        21.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 63.750Ki/s, 2h13m3Transferred:   	     1020 KiB / 2.025 GiB, 0%, 57.905 KiB/s, ETA 10h10m48s
+Transferred:            0 / 5, 0%
+Elapsed time:        21.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 59.766Ki/s, 2h22m2Transferred:   	     1020 KiB / 2.025 GiB, 0%, 57.905 KiB/s, ETA 10h10m48s
+Transferred:            0 / 5, 0%
+Elapsed time:        22.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 59.766Ki/s, 2h22m2Transferred:   	     1020 KiB / 2.025 GiB, 0%, 54.286 KiB/s, ETA 10h51m31s
+Transferred:            0 / 5, 0%
+Elapsed time:        22.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 56.030Ki/s, 2h31m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 54.286 KiB/s, ETA 10h51m31s
+Transferred:            0 / 5, 0%
+Elapsed time:        23.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 56.030Ki/s, 2h31m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 50.893 KiB/s, ETA 11h34m57s
+Transferred:            0 / 5, 0%
+Elapsed time:        23.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 52.528Ki/s, 2h42m7Transferred:   	     1020 KiB / 2.025 GiB, 0%, 50.893 KiB/s, ETA 11h34m57s
+Transferred:            0 / 5, 0%
+Elapsed time:        24.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 52.528Ki/s, 2h42m7Transferred:   	     1020 KiB / 2.025 GiB, 0%, 47.712 KiB/s, ETA 12h21m17s
+Transferred:            0 / 5, 0%
+Elapsed time:        24.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 49.245Ki/s, 2h52m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 47.712 KiB/s, ETA 12h21m17s
+Transferred:            0 / 5, 0%
+Elapsed time:        25.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 49.245Ki/s, 2h52m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 44.729 KiB/s, ETA 13h10m42s
+Transferred:            0 / 5, 0%
+Elapsed time:        25.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 46.167Ki/s, 3h4m27Transferred:   	     1020 KiB / 2.025 GiB, 0%, 44.729 KiB/s, ETA 13h10m42s
+Transferred:            0 / 5, 0%
+Elapsed time:        26.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 46.167Ki/s, 3h4m27Transferred:   	     1020 KiB / 2.025 GiB, 0%, 41.935 KiB/s, ETA 14h3m25s
+Transferred:            0 / 5, 0%
+Elapsed time:        26.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 43.281Ki/s, 3h16m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 41.935 KiB/s, ETA 14h3m25s
+Transferred:            0 / 5, 0%
+Elapsed time:        27.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 43.281Ki/s, 3h16m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 39.313 KiB/s, ETA 14h59m38s
+Transferred:            0 / 5, 0%
+Elapsed time:        27.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 40.576Ki/s, 3h29m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 39.313 KiB/s, ETA 14h59m38s
+Transferred:            0 / 5, 0%
+Elapsed time:        28.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 40.576Ki/s, 3h29m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 36.856 KiB/s, ETA 15h59m37s
+Transferred:            0 / 5, 0%
+Elapsed time:        28.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 38.040Ki/s, 3h43m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 36.856 KiB/s, ETA 15h59m37s
+Transferred:            0 / 5, 0%
+Elapsed time:        29.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 38.040Ki/s, 3h43m5Transferred:   	     1020 KiB / 2.025 GiB, 0%, 34.553 KiB/s, ETA 17h3m35s
+Transferred:            0 / 5, 0%
+Elapsed time:        29.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 35.663Ki/s, 3h58m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 34.553 KiB/s, ETA 17h3m35s
+Transferred:            0 / 5, 0%
+Elapsed time:        30.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 35.663Ki/s, 3h58m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 32.394 KiB/s, ETA 18h11m50s
+Transferred:            0 / 5, 0%
+Elapsed time:        30.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 33.434Ki/s, 4h14m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 32.394 KiB/s, ETA 18h11m50s
+Transferred:            0 / 5, 0%
+Elapsed time:        31.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 33.434Ki/s, 4h14m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 30.368 KiB/s, ETA 19h24m37s
+Transferred:            0 / 5, 0%
+Elapsed time:        31.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 31.344Ki/s, 4h31m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 30.368 KiB/s, ETA 19h24m37s
+Transferred:            0 / 5, 0%
+Elapsed time:        32.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 31.344Ki/s, 4h31m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 28.471 KiB/s, ETA 20h42m16s
+Transferred:            0 / 5, 0%
+Elapsed time:        32.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 29.385Ki/s, 4h49m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 28.471 KiB/s, ETA 20h42m16s
+Transferred:            0 / 5, 0%
+Elapsed time:        33.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 29.385Ki/s, 4h49m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 26.691 KiB/s, ETA 22h5m5s
+Transferred:            0 / 5, 0%
+Elapsed time:        33.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 27.549Ki/s, 5h9m8sTransferred:   	     1020 KiB / 2.025 GiB, 0%, 26.691 KiB/s, ETA 22h5m5s
+Transferred:            0 / 5, 0%
+Elapsed time:        34.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 27.549Ki/s, 5h9m8sTransferred:   	     1020 KiB / 2.025 GiB, 0%, 25.022 KiB/s, ETA 23h33m25s
+Transferred:            0 / 5, 0%
+Elapsed time:        34.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 25.827Ki/s, 5h29m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 25.022 KiB/s, ETA 23h33m25s
+Transferred:            0 / 5, 0%
+Elapsed time:        35.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 25.827Ki/s, 5h29m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 23.459 KiB/s, ETA 1d1h7m
+Transferred:            0 / 5, 0%
+Elapsed time:        35.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 24.213Ki/s, 5h51m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 23.459 KiB/s, ETA 1d1h7m
+Transferred:            0 / 5, 0%
+Elapsed time:        36.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 24.213Ki/s, 5h51m4Transferred:   	     1020 KiB / 2.025 GiB, 0%, 21.992 KiB/s, ETA 1d2h48m
+Transferred:            0 / 5, 0%
+Elapsed time:        36.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 22.699Ki/s, 6h15m1Transferred:   	     1020 KiB / 2.025 GiB, 0%, 21.992 KiB/s, ETA 1d2h48m
+Transferred:            0 / 5, 0%
+Elapsed time:        37.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 22.699Ki/s, 6h15m1
+
+04:21:08.774 PM (UTC): [INFO] [<downloadInstallGameButton_Click>d__112.MoveNext] Starting Game Download
+04:21:08.774 PM (UTC): [INFO] [<downloadInstallGameButton_Click>d__112.MoveNext] rclone copy "Public:Quest Games/Airport Ground Handling Simulator VR v25+1.4.3 - 2023-04-14_17-33 - 16fe2009 -VRP v76"
+04:21:08.774 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Running Rclone command: copy ":http:/0e4c961b752ced2a7b8b07253d209614/" "CurrentDirectory\0e4c961b752ced2a7b8b07253d209614" --transfers 1 --multi-thread-streams 0 --progress --rc 
+04:21:09.786 PM (UTC): [INFO] [<CountDownload>d__0.MoveNext] {"status":200,"message":"Records Updated Successfully"}
+04:22:20.723 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_PublicConfig] Rclone error: 2025/08/16 21:51:08 NOTICE: Serving remote control on http://127.0.0.1:5572/
+2025/08/16 21:51:08 NOTICE: Config file "C:\\Users\\amrit\\AppData\\Roaming\\rclone\\rclone.conf" not found - using defaults
+
+
+
+04:22:20.723 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Rclone Output: Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         0.5sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.0sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.5sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         2.0sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         2.5sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         3.0sTransferred:   	          0 B / 1.537 GiB, 0%, 0 B/s, ETA -
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         3.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: transferringTransferred:   	          0 B / 1.537 GiB, 0%, 0 B/s, ETA -
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         4.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: transferringTransferred:   	      124 KiB / 2.025 GiB, 0%, 0 B/s, ETA -
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         4.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002:  0% /500Mi, 0/s, -Transferred:   	    2.996 MiB / 2.025 GiB, 0%, 0 B/s, ETA -
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         5.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002:  0% /500Mi, 0/s, -Transferred:   	   16.996 MiB / 2.025 GiB, 1%, 1.998 MiB/s, ETA 17m9s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         5.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002:  3% /500Mi, 8.996Mi/s, 53sTransferred:   	   29.996 MiB / 2.025 GiB, 1%, 1.998 MiB/s, ETA 17m2s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         6.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002:  5% /500Mi, 8.996Mi/s, 52sTransferred:   	   44.996 MiB / 2.025 GiB, 2%, 10.665 MiB/s, ETA 3m10s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         6.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002:  8% /500Mi, 19.498Mi/s, 23sTransferred:   	   61.996 MiB / 2.025 GiB, 3%, 10.665 MiB/s, ETA 3m8s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         7.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 12% /500Mi, 19.498Mi/s, 22sTransferred:   	   77.996 MiB / 2.025 GiB, 4%, 15.999 MiB/s, ETA 2m4s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         7.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 15% /500Mi, 23.665Mi/s, 17sTransferred:   	   94.996 MiB / 2.025 GiB, 5%, 15.999 MiB/s, ETA 2m3s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         8.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 18% /500Mi, 23.665Mi/s, 17sTransferred:   	  110.996 MiB / 2.025 GiB, 5%, 19.399 MiB/s, ETA 1m41s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         8.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 22% /500Mi, 25.999Mi/s, 14sTransferred:   	  126.996 MiB / 2.025 GiB, 6%, 19.399 MiB/s, ETA 1m40s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         9.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 25% /500Mi, 25.999Mi/s, 14sTransferred:   	  143.996 MiB / 2.025 GiB, 7%, 21.499 MiB/s, ETA 1m29s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:         9.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 28% /500Mi, 27.399Mi/s, 12sTransferred:   	  160.996 MiB / 2.025 GiB, 8%, 21.499 MiB/s, ETA 1m28s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        10.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 32% /500Mi, 27.399Mi/s, 12sTransferred:   	  178.996 MiB / 2.025 GiB, 9%, 23.428 MiB/s, ETA 1m20s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        10.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 35% /500Mi, 28.666Mi/s, 11sTransferred:   	  195.996 MiB / 2.025 GiB, 9%, 23.428 MiB/s, ETA 1m20s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        11.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 39% /500Mi, 28.666Mi/s, 10sTransferred:   	  213.996 MiB / 2.025 GiB, 10%, 24.875 MiB/s, ETA 1m14s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        11.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 42% /500Mi, 29.571Mi/s, 9sTransferred:   	  231.996 MiB / 2.025 GiB, 11%, 24.875 MiB/s, ETA 1m14s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        12.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 46% /500Mi, 29.571Mi/s, 9sTransferred:   	  249.996 MiB / 2.025 GiB, 12%, 26.000 MiB/s, ETA 1m10s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        12.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 49% /500Mi, 30.375Mi/s, 8sTransferred:   	  267.996 MiB / 2.025 GiB, 13%, 26.000 MiB/s, ETA 1m9s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        13.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 53% /500Mi, 30.375Mi/s, 7sTransferred:   	  285.996 MiB / 2.025 GiB, 14%, 27.000 MiB/s, ETA 1m6s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        13.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 57% /500Mi, 30.888Mi/s, 6sTransferred:   	  302.996 MiB / 2.025 GiB, 15%, 27.000 MiB/s, ETA 1m5s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        14.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 60% /500Mi, 30.888Mi/s, 6sTransferred:   	  317.996 MiB / 2.025 GiB, 15%, 27.727 MiB/s, ETA 1m3s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        14.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 63% /500Mi, 31.400Mi/s, 5sTransferred:   	  328.996 MiB / 2.025 GiB, 16%, 27.727 MiB/s, ETA 1m2s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        15.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 65% /500Mi, 31.400Mi/s, 5sTransferred:   	  345.996 MiB / 2.025 GiB, 17%, 27.583 MiB/s, ETA 1m2s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        15.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 69% /500Mi, 30.818Mi/s, 4sTransferred:   	  363.996 MiB / 2.025 GiB, 18%, 27.583 MiB/s, ETA 1m1s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        16.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 72% /500Mi, 30.818Mi/s, 4sTransferred:   	  380.996 MiB / 2.025 GiB, 18%, 28.154 MiB/s, ETA 1m
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        16.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 76% /500Mi, 31.166Mi/s, 3sTransferred:   	  398.996 MiB / 2.025 GiB, 19%, 28.154 MiB/s, ETA 59s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        17.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 79% /500Mi, 31.166Mi/s, 3sTransferred:   	  401.996 MiB / 2.025 GiB, 19%, 28.714 MiB/s, ETA 58s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        17.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 80% /500Mi, 30.923Mi/s, 3sTransferred:   	  412.996 MiB / 2.025 GiB, 20%, 28.714 MiB/s, ETA 57s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        18.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 82% /500Mi, 30.923Mi/s, 2sTransferred:   	  421.996 MiB / 2.025 GiB, 20%, 27.666 MiB/s, ETA 59s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        18.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 84% /500Mi, 30.143Mi/s, 2sTransferred:   	  421.996 MiB / 2.025 GiB, 20%, 27.666 MiB/s, ETA 59s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        19.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 84% /500Mi, 30.143Mi/s, 2sTransferred:   	  430.996 MiB / 2.025 GiB, 21%, 26.375 MiB/s, ETA 1m2s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        19.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 86% /500Mi, 28.133Mi/s, 2sTransferred:   	  448.996 MiB / 2.025 GiB, 22%, 26.375 MiB/s, ETA 1m1s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        20.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 89% /500Mi, 28.133Mi/s, 1sTransferred:   	  466.996 MiB / 2.025 GiB, 23%, 26.539 MiB/s, ETA 1m
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        20.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 93% /500Mi, 28.687Mi/s, 1sTransferred:   	  483.996 MiB / 2.025 GiB, 23%, 26.539 MiB/s, ETA 59s
+Checks:                 1 / 1, 100%
+Transferred:            0 / 5, 0%
+Elapsed time:        21.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.002: 96% /500Mi, 28.687Mi/s, 0sTransferred:   	      500 MiB / 1.537 GiB, 32%, 27.068 MiB/s, ETA 39s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        21.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: transferringTransferred:   	  508.996 MiB / 2.025 GiB, 25%, 27.068 MiB/s, ETA 57s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        22.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003:  1% /500Mi, 0/s, -Transferred:   	  525.996 MiB / 2.025 GiB, 25%, 26.938 MiB/s, ETA 57s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        22.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003:  5% /500Mi, 0/s, -Transferred:   	  543.996 MiB / 2.025 GiB, 26%, 26.938 MiB/s, ETA 56s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        23.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003:  8% /500Mi, 36.996Mi/s, 12sTransferred:   	  561.996 MiB / 2.025 GiB, 27%, 27.442 MiB/s, ETA 55s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        23.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 12% /500Mi, 36.996Mi/s, 11sTransferred:   	  579.996 MiB / 2.025 GiB, 28%, 27.442 MiB/s, ETA 54s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        24.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 15% /500Mi, 36.498Mi/s, 11sTransferred:   	  596.996 MiB / 2.025 GiB, 29%, 27.977 MiB/s, ETA 52s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        24.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 19% /500Mi, 36.498Mi/s, 11sTransferred:   	  614.996 MiB / 2.025 GiB, 30%, 27.977 MiB/s, ETA 52s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        25.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 22% /500Mi, 35.999Mi/s, 10sTransferred:   	  631.996 MiB / 2.025 GiB, 30%, 28.416 MiB/s, ETA 50s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        25.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 26% /500Mi, 35.999Mi/s, 10sTransferred:   	  649.996 MiB / 2.025 GiB, 31%, 28.416 MiB/s, ETA 50s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        26.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 29% /500Mi, 35.749Mi/s, 9sTransferred:   	  667.996 MiB / 2.025 GiB, 32%, 28.828 MiB/s, ETA 48s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        26.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 33% /500Mi, 35.749Mi/s, 9sTransferred:   	  684.996 MiB / 2.025 GiB, 33%, 28.828 MiB/s, ETA 48s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        27.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 36% /500Mi, 35.799Mi/s, 8sTransferred:   	  702.996 MiB / 2.025 GiB, 34%, 29.276 MiB/s, ETA 46s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        27.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 40% /500Mi, 35.799Mi/s, 8sTransferred:   	  719.996 MiB / 2.025 GiB, 35%, 29.276 MiB/s, ETA 46s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        28.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 43% /500Mi, 35.666Mi/s, 7sTransferred:   	  737.996 MiB / 2.025 GiB, 36%, 29.634 MiB/s, ETA 45s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        28.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 47% /500Mi, 35.666Mi/s, 7sTransferred:   	  755.996 MiB / 2.025 GiB, 36%, 29.634 MiB/s, ETA 44s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        29.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 51% /500Mi, 35.571Mi/s, 6sTransferred:   	  772.996 MiB / 2.025 GiB, 37%, 29.969 MiB/s, ETA 43s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        29.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 54% /500Mi, 35.571Mi/s, 6sTransferred:   	  782.996 MiB / 2.025 GiB, 38%, 29.969 MiB/s, ETA 43s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        30.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 56% /500Mi, 34.750Mi/s, 6sTransferred:   	  800.996 MiB / 2.025 GiB, 39%, 29.783 MiB/s, ETA 42s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        30.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 60% /500Mi, 34.750Mi/s, 5sTransferred:   	  817.996 MiB / 2.025 GiB, 39%, 29.783 MiB/s, ETA 42s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        31.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 63% /500Mi, 34.666Mi/s, 5sTransferred:   	  835.996 MiB / 2.025 GiB, 40%, 30.172 MiB/s, ETA 41s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        31.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 67% /500Mi, 34.666Mi/s, 4sTransferred:   	  853.996 MiB / 2.025 GiB, 41%, 30.172 MiB/s, ETA 40s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        32.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 70% /500Mi, 34.700Mi/s, 4sTransferred:   	  871.996 MiB / 2.025 GiB, 42%, 30.474 MiB/s, ETA 39s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        32.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 74% /500Mi, 34.700Mi/s, 3sTransferred:   	  888.996 MiB / 2.025 GiB, 43%, 30.474 MiB/s, ETA 38s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        33.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 77% /500Mi, 34.818Mi/s, 3sTransferred:   	  906.996 MiB / 2.025 GiB, 44%, 30.757 MiB/s, ETA 37s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        33.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 81% /500Mi, 34.818Mi/s, 2sTransferred:   	  924.996 MiB / 2.025 GiB, 45%, 30.757 MiB/s, ETA 37s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        34.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 84% /500Mi, 34.833Mi/s, 2sTransferred:   	  941.996 MiB / 2.025 GiB, 45%, 31.084 MiB/s, ETA 36s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        34.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 88% /500Mi, 34.833Mi/s, 1sTransferred:   	  959.996 MiB / 2.025 GiB, 46%, 31.084 MiB/s, ETA 35s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        35.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 91% /500Mi, 34.846Mi/s, 1sTransferred:   	  972.996 MiB / 2.025 GiB, 47%, 31.329 MiB/s, ETA 35s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        35.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 94% /500Mi, 34.846Mi/s, 0sTransferred:   	  989.996 MiB / 2.025 GiB, 48%, 31.329 MiB/s, ETA 34s
+Checks:                 1 / 1, 100%
+Transferred:            1 / 5, 20%
+Elapsed time:        36.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.003: 97% /500Mi, 34.571Mi/s, 0sTransferred:   	     1000 MiB / 1.537 GiB, 64%, 31.308 MiB/s, ETA 18s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        36.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: transferringTransferred:   	 1004.996 MiB / 2.025 GiB, 48%, 31.308 MiB/s, ETA 34s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        37.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004:  0% /500Mi, 0/s, -Transferred:   	 1019.996 MiB / 2.025 GiB, 49%, 30.164 MiB/s, ETA 34s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        37.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004:  3% /500Mi, 0/s, -Transferred:   	    1.014 GiB / 2.025 GiB, 50%, 30.164 MiB/s, ETA 34s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        38.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004:  7% /500Mi, 22.996Mi/s, 20sTransferred:   	    1.030 GiB / 2.025 GiB, 51%, 30.404 MiB/s, ETA 33s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        38.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 10% /500Mi, 22.996Mi/s, 19sTransferred:   	    1.047 GiB / 2.025 GiB, 52%, 30.404 MiB/s, ETA 32s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        39.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 14% /500Mi, 28.498Mi/s, 15sTransferred:   	    1.064 GiB / 2.025 GiB, 53%, 30.629 MiB/s, ETA 32s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        39.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 17% /500Mi, 28.498Mi/s, 14sTransferred:   	    1.082 GiB / 2.025 GiB, 53%, 30.629 MiB/s, ETA 31s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        40.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 21% /500Mi, 30.665Mi/s, 12sTransferred:   	    1.099 GiB / 2.025 GiB, 54%, 30.964 MiB/s, ETA 30s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        40.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 24% /500Mi, 30.665Mi/s, 12sTransferred:   	    1.116 GiB / 2.025 GiB, 55%, 30.964 MiB/s, ETA 30s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        41.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 28% /500Mi, 31.749Mi/s, 11sTransferred:   	    1.133 GiB / 2.025 GiB, 56%, 31.217 MiB/s, ETA 29s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        41.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 31% /500Mi, 31.749Mi/s, 10sTransferred:   	    1.150 GiB / 2.025 GiB, 57%, 31.217 MiB/s, ETA 28s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        42.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 35% /500Mi, 32.599Mi/s, 9sTransferred:   	    1.168 GiB / 2.025 GiB, 58%, 31.453 MiB/s, ETA 27s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        42.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 39% /500Mi, 32.599Mi/s, 9sTransferred:   	    1.186 GiB / 2.025 GiB, 59%, 31.453 MiB/s, ETA 27s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        43.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 42% /500Mi, 32.999Mi/s, 8sTransferred:   	    1.203 GiB / 2.025 GiB, 59%, 31.737 MiB/s, ETA 26s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        43.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 46% /500Mi, 32.999Mi/s, 8sTransferred:   	    1.220 GiB / 2.025 GiB, 60%, 31.737 MiB/s, ETA 25s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        44.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 49% /500Mi, 33.428Mi/s, 7sTransferred:   	    1.227 GiB / 2.025 GiB, 61%, 32.004 MiB/s, ETA 25s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        44.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 51% /500Mi, 33.428Mi/s, 7sTransferred:   	    1.245 GiB / 2.025 GiB, 61%, 32.004 MiB/s, ETA 24s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        45.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 54% /500Mi, 32.500Mi/s, 6sTransferred:   	    1.262 GiB / 2.025 GiB, 62%, 31.566 MiB/s, ETA 24s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        45.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 58% /500Mi, 32.500Mi/s, 6sTransferred:   	    1.279 GiB / 2.025 GiB, 63%, 31.566 MiB/s, ETA 24s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        46.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 61% /500Mi, 32.666Mi/s, 5sTransferred:   	    1.296 GiB / 2.025 GiB, 64%, 31.781 MiB/s, ETA 23s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        46.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 65% /500Mi, 32.666Mi/s, 5sTransferred:   	    1.313 GiB / 2.025 GiB, 65%, 31.781 MiB/s, ETA 22s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        47.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 68% /500Mi, 32.900Mi/s, 4sTransferred:   	    1.320 GiB / 2.025 GiB, 65%, 31.857 MiB/s, ETA 22s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        47.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 70% /500Mi, 32.900Mi/s, 4sTransferred:   	    1.337 GiB / 2.025 GiB, 66%, 31.857 MiB/s, ETA 22s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        48.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 73% /500Mi, 32.181Mi/s, 4sTransferred:   	    1.354 GiB / 2.025 GiB, 67%, 31.553 MiB/s, ETA 21s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        48.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 77% /500Mi, 32.181Mi/s, 3sTransferred:   	    1.372 GiB / 2.025 GiB, 68%, 31.553 MiB/s, ETA 21s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        49.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 80% /500Mi, 32.416Mi/s, 2sTransferred:   	    1.389 GiB / 2.025 GiB, 69%, 31.769 MiB/s, ETA 20s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        49.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 84% /500Mi, 32.416Mi/s, 2sTransferred:   	    1.406 GiB / 2.025 GiB, 69%, 31.769 MiB/s, ETA 19s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        50.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 87% /500Mi, 32.615Mi/s, 1sTransferred:   	    1.413 GiB / 2.025 GiB, 70%, 31.971 MiB/s, ETA 19s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        50.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 89% /500Mi, 32.615Mi/s, 1sTransferred:   	    1.415 GiB / 2.025 GiB, 70%, 31.971 MiB/s, ETA 19s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        51.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 89% /500Mi, 31.928Mi/s, 1sTransferred:   	    1.415 GiB / 2.025 GiB, 70%, 30.410 MiB/s, ETA 20s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        51.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 89% /500Mi, 31.928Mi/s, 1sTransferred:   	    1.417 GiB / 2.025 GiB, 70%, 30.410 MiB/s, ETA 20s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        52.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 90% /500Mi, 30.000Mi/s, 1sTransferred:   	    1.417 GiB / 2.025 GiB, 70%, 28.634 MiB/s, ETA 21s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        52.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 90% /500Mi, 30.000Mi/s, 1sTransferred:   	    1.418 GiB / 2.025 GiB, 70%, 28.634 MiB/s, ETA 21s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        53.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 90% /500Mi, 28.187Mi/s, 1sTransferred:   	    1.419 GiB / 2.025 GiB, 70%, 26.907 MiB/s, ETA 23s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        53.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 90% /500Mi, 28.187Mi/s, 1sTransferred:   	    1.437 GiB / 2.025 GiB, 71%, 26.907 MiB/s, ETA 22s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        54.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 94% /500Mi, 26.551Mi/s, 1sTransferred:   	    1.454 GiB / 2.025 GiB, 72%, 26.600 MiB/s, ETA 21s
+Checks:                 1 / 1, 100%
+Transferred:            2 / 5, 40%
+Elapsed time:        54.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.004: 97% /500Mi, 26.551Mi/s, 0sTransferred:   	    1.471 GiB / 2.025 GiB, 73%, 26.600 MiB/s, ETA 21s
+Checks:                 1 / 1, 100%
+Transferred:            3 / 5, 60%
+Elapsed time:        55.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.005:  8% /73.378Mi, 0/s, -Transferred:   	    1.488 GiB / 2.025 GiB, 74%, 27.063 MiB/s, ETA 20s
+Checks:                 1 / 1, 100%
+Transferred:            3 / 5, 60%
+Elapsed time:        55.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.005: 32% /73.378Mi, 0/s, -Transferred:   	    1.506 GiB / 2.025 GiB, 74%, 27.063 MiB/s, ETA 19s
+Checks:                 1 / 1, 100%
+Transferred:            3 / 5, 60%
+Elapsed time:        56.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.005: 57% /73.378Mi, 35.996Mi/s, 0sTransferred:   	    1.523 GiB / 2.025 GiB, 75%, 27.622 MiB/s, ETA 18s
+Checks:                 1 / 1, 100%
+Transferred:            3 / 5, 60%
+Elapsed time:        56.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.005: 81% /73.378Mi, 35.996Mi/s, 0sTransferred:   	    1.537 GiB / 1.537 GiB, 100%, 27.622 MiB/s, ETA 0s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:        57.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: transferringTransferred:   	    1.538 GiB / 2.025 GiB, 76%, 27.732 MiB/s, ETA 17s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:        57.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  0% /500Mi, 0/s, -Transferred:   	    1.551 GiB / 2.025 GiB, 77%, 27.732 MiB/s, ETA 17s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:        58.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  2% /500Mi, 0/s, -Transferred:   	    1.569 GiB / 2.025 GiB, 77%, 27.061 MiB/s, ETA 17s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:        58.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001:  6% /500Mi, 22.996Mi/s, 20sTransferred:   	    1.586 GiB / 2.025 GiB, 78%, 27.061 MiB/s, ETA 16s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:        59.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 10% /500Mi, 22.996Mi/s, 19sTransferred:   	    1.605 GiB / 2.025 GiB, 79%, 27.682 MiB/s, ETA 15s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:        59.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 13% /500Mi, 29.498Mi/s, 14sTransferred:   	    1.622 GiB / 2.025 GiB, 80%, 27.682 MiB/s, ETA 14s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m0.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 17% /500Mi, 29.498Mi/s, 13sTransferred:   	    1.640 GiB / 2.025 GiB, 81%, 28.202 MiB/s, ETA 13s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m0.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 21% /500Mi, 31.665Mi/s, 12sTransferred:   	    1.658 GiB / 2.025 GiB, 82%, 28.202 MiB/s, ETA 13s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m1.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 24% /500Mi, 31.665Mi/s, 11sTransferred:   	    1.673 GiB / 2.025 GiB, 83%, 28.689 MiB/s, ETA 12s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m1.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 27% /500Mi, 32.749Mi/s, 10sTransferred:   	    1.685 GiB / 2.025 GiB, 83%, 28.689 MiB/s, ETA 12s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m2.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 30% /500Mi, 32.749Mi/s, 10sTransferred:   	    1.703 GiB / 2.025 GiB, 84%, 28.708 MiB/s, ETA 11s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m2.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 34% /500Mi, 32.199Mi/s, 10sTransferred:   	    1.720 GiB / 2.025 GiB, 85%, 28.708 MiB/s, ETA 10s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m3.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 37% /500Mi, 32.199Mi/s, 9sTransferred:   	    1.738 GiB / 2.025 GiB, 86%, 29.102 MiB/s, ETA 10s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m3.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 41% /500Mi, 32.666Mi/s, 9sTransferred:   	    1.755 GiB / 2.025 GiB, 87%, 29.102 MiB/s, ETA 9s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m4.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 44% /500Mi, 32.666Mi/s, 8sTransferred:   	    1.773 GiB / 2.025 GiB, 88%, 29.595 MiB/s, ETA 8s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m4.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 48% /500Mi, 33.142Mi/s, 7sTransferred:   	    1.790 GiB / 2.025 GiB, 88%, 29.595 MiB/s, ETA 8s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m5.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 51% /500Mi, 33.142Mi/s, 7sTransferred:   	    1.809 GiB / 2.025 GiB, 89%, 29.996 MiB/s, ETA 7s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m5.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 55% /500Mi, 33.500Mi/s, 6sTransferred:   	    1.827 GiB / 2.025 GiB, 90%, 29.996 MiB/s, ETA 6s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m6.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 59% /500Mi, 33.500Mi/s, 6sTransferred:   	    1.844 GiB / 2.025 GiB, 91%, 30.371 MiB/s, ETA 6s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m6.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 62% /500Mi, 33.777Mi/s, 5sTransferred:   	    1.862 GiB / 2.025 GiB, 92%, 30.371 MiB/s, ETA 5s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m7.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 66% /500Mi, 33.777Mi/s, 4sTransferred:   	    1.879 GiB / 2.025 GiB, 93%, 30.723 MiB/s, ETA 4s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m7.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 70% /500Mi, 34.100Mi/s, 4sTransferred:   	    1.897 GiB / 2.025 GiB, 94%, 30.723 MiB/s, ETA 4s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m8.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 73% /500Mi, 34.100Mi/s, 3sTransferred:   	    1.907 GiB / 2.025 GiB, 94%, 31.115 MiB/s, ETA 3s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m8.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 75% /500Mi, 34.000Mi/s, 3sTransferred:   	    1.923 GiB / 2.025 GiB, 95%, 31.115 MiB/s, ETA 3s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m9.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 79% /500Mi, 34.000Mi/s, 3sTransferred:   	    1.942 GiB / 2.025 GiB, 96%, 30.858 MiB/s, ETA 2s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:       1m9.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 82% /500Mi, 33.666Mi/s, 2sTransferred:   	    1.959 GiB / 2.025 GiB, 97%, 30.858 MiB/s, ETA 2s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:      1m10.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 86% /500Mi, 33.666Mi/s, 1sTransferred:   	    1.977 GiB / 2.025 GiB, 98%, 31.179 MiB/s, ETA 1s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:      1m10.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 90% /500Mi, 33.846Mi/s, 1sTransferred:   	    1.995 GiB / 2.025 GiB, 99%, 31.179 MiB/s, ETA 0s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:      1m11.0s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 93% /500Mi, 33.846Mi/s, 0sTransferred:   	    2.012 GiB / 2.025 GiB, 99%, 31.481 MiB/s, ETA 0s
+Checks:                 1 / 1, 100%
+Transferred:            4 / 5, 80%
+Elapsed time:      1m11.5s
+Transferring:
+ *       0e4c961b752ced2a7b8b07253d209614.7z.001: 97% /500Mi, 34.000Mi/s, 0sTransferred:   	    2.025 GiB / 2.025 GiB, 100%, 31.481 MiB/s, ETA 0s
+Checks:                 1 / 1, 100%
+Transferred:            5 / 5, 100%
+Elapsed time:      1m11.8s
+
+
+04:22:20.766 PM (UTC): [INFO] [Zip.DoExtract] Extract: 7z x "E:\rookie\rookie\0e4c961b752ced2a7b8b07253d209614\0e4c961b752ced2a7b8b07253d209614.7z.001" -y -o"E:\rookie\rookie" -bsp1
+04:22:33.425 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB install -g "CurrentDirectory\Airport Ground Handling Simulator VR v25+1.4.3 - 2023-04-14_17-33 - 16fe2009 -VRP v76\com.AVIAR.AGHS.apk"
+04:22:37.647 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Performing Streamed Install
+Success
+
+04:22:37.733 PM (UTC): [INFO] [MainForm.deleteOBB] Attempting to delete old OBB Folder
+04:22:37.733 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell rm -rf "/sdcard/Android/obb/com.AVIAR.AGHS"
+04:22:37.769 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell rm -rf "/sdcard/Android/obb/com.AVIAR.AGHS" && mkdir "/sdcard/Android/obb/com.AVIAR.AGHS"
+04:22:37.814 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB push "CurrentDirectory\Airport Ground Handling Simulator VR v25+1.4.3 - 2023-04-14_17-33 - 16fe2009 -VRP v76\com.AVIAR.AGHS\main.25.com.AVIAR.AGHS.obb" "/sdcard/Android/obb/com.AVIAR.AGHS/main.25.com.AVIAR.AGHS.obb"
+04:23:35.334 PM (UTC): [INFO] [ADB.RunAdbCommandToString] E:\rookie\rookie\Airport Ground Handling Simulator VR v25+1.4.3 - 2023-04-14_17-33 - 16fe2009 -VRP v76\com.AVIAR.AGHS\main.25.com.AVIAR.AGHS.obb: 1 file pushed, 0 skipped. 40.1 MB/s (2415061048 bytes in 57.453s)
+
+
+04:23:35.357 PM (UTC): [INFO] [<compareOBBSizes>d__115.MoveNext] Comparing OBBs
+04:23:35.357 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell du -m "/sdcard/Android/obb/com.AVIAR.AGHS"
+04:23:35.405 PM (UTC): [INFO] [ADB.RunAdbCommandToString] 2304	/sdcard/Android/obb/com.AVIAR.AGHS
+
+
+04:23:35.405 PM (UTC): [INFO] [<compareOBBSizes>d__115.MoveNext] Total local folder size in bytes: 2303 Remote Size: 2304
+04:23:35.640 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command:  -s 2G0YC5ZH1402GB shell df
+04:23:35.898 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.truantpixel.twomdquest from 0 to 300027
+04:23:35.898 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game 2MD- VR Football Unleashed ALLSTAR; cloudversion=300027 localversion=300027
+04:23:35.952 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for red.chesco.a102 from 0 to 54
+04:23:35.952 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game A102; cloudversion=54 localversion=54
+04:23:35.994 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.AVIAR.AGHS from 0 to 25
+04:23:35.994 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Airport Ground Handling Simulator VR; cloudversion=25 localversion=25
+04:23:36.046 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.MyDearest.Altdeus from 0 to 538
+04:23:36.046 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game ALTDEUS- Beyond Chronos; cloudversion=538 localversion=538
+04:23:36.088 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.Sanzaru.Wrath2 from 0 to 5513
+04:23:36.088 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Asgards Wrath 2; cloudversion=5513 localversion=5513
+04:23:36.140 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.Sanzaru.Wrath2 from 0 to 5513
+04:23:36.140 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Asgards Wrath 2 (Language Packs Only); cloudversion=5513 localversion=5513
+04:23:36.190 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.camouflaj.manta from 0 to 350947
+04:23:36.190 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Batman- Arkham Shadow (Inc Lang Packs); cloudversion=350947 localversion=350947
+04:23:36.231 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.231 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber; cloudversion=1743 localversion=1743
+04:23:36.280 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.281 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber (Quest 1); cloudversion=1743 localversion=1743
+04:23:36.326 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.326 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber (Quest 1); cloudversion=1743 localversion=1743
+04:23:36.370 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.371 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber (Quest 1); cloudversion=1743 localversion=1743
+04:23:36.416 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.417 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.28.0; cloudversion=1743 localversion=1743
+04:23:36.457 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.458 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.35.0; cloudversion=1743 localversion=1743
+04:23:36.501 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.501 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.37.0; cloudversion=1743 localversion=1743
+04:23:36.545 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.beatgames.beatsaber from 0 to 1743
+04:23:36.545 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Beat Saber 1.40.4; cloudversion=1743 localversion=1743
+04:23:36.592 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.AnthonyStudios.GunWorldVR from 0 to 394
+04:23:36.592 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Gun World VR; cloudversion=394 localversion=394
+04:23:36.640 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.owlchemylabs.jobsimulator from 0 to 45
+04:23:36.640 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Job Simulator; cloudversion=45 localversion=45
+04:23:36.687 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.owlchemylabs.jobsimulator from 0 to 45
+04:23:36.687 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Job Simulator (Quest 1); cloudversion=45 localversion=45
+04:23:36.744 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for com.Armature.VR4 from 0 to 203
+04:23:36.744 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game Resident Evil 4; cloudversion=203 localversion=203
+04:23:36.805 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Updated cloudVersionInt for co.spl.wwz_vr from 0 to 3068
+04:23:36.805 PM (UTC): [INFO] [<>c__DisplayClass78_0.<initListView>b__0] Checked game World War Z VR; cloudversion=3068 localversion=3068
+04:24:28.701 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game 2MD- VR Football Unleashed ALLSTAR; cloudversion=300027 localversion=300027
+04:24:28.755 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game A102; cloudversion=54 localversion=54
+04:24:28.798 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Airport Ground Handling Simulator VR; cloudversion=25 localversion=25
+04:24:28.844 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game ALTDEUS- Beyond Chronos; cloudversion=538 localversion=538
+04:24:28.889 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Asgards Wrath 2; cloudversion=5513 localversion=5513
+04:24:28.932 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Asgards Wrath 2 (Language Packs Only); cloudversion=5513 localversion=5513
+04:24:28.970 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Batman- Arkham Shadow (Inc Lang Packs); cloudversion=350947 localversion=350947
+04:24:29.020 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber; cloudversion=1743 localversion=1743
+04:24:29.065 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber (Quest 1); cloudversion=1237 localversion=1743
+04:24:29.109 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber (Quest 1); cloudversion=1312 localversion=1743
+04:24:29.149 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber (Quest 1); cloudversion=1422 localversion=1743
+04:24:29.191 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber 1.28.0; cloudversion=545 localversion=1743
+04:24:29.234 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber 1.35.0; cloudversion=1130 localversion=1743
+04:24:29.271 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber 1.37.0; cloudversion=1238 localversion=1743
+04:24:29.322 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Beat Saber 1.40.4; cloudversion=1598 localversion=1743
+04:24:29.383 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Gun World VR; cloudversion=394 localversion=394
+04:24:29.430 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Job Simulator; cloudversion=45 localversion=45
+04:24:29.474 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Job Simulator (Quest 1); cloudversion=40 localversion=45
+04:24:29.524 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game Resident Evil 4; cloudversion=203 localversion=203
+04:24:29.577 PM (UTC): [INFO] [<>c__DisplayClass156_0.<lblUpToDate_Click>b__0] Checked game World War Z VR; cloudversion=3068 localversion=3068
+04:31:50.930 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: device '2G0YC5ZH1402GB' not found
+
+
+07:05:16.307 PM (UTC): [INFO] [Logger.Initialize] Logger initialized at: 12:35AM(UTC)
+07:05:16.431 PM (UTC): [INFO] [<Form1_Load>d__35.MoveNext] Starting AndroidSideloader Application
+07:05:16.436 PM (UTC): [INFO] [GetDependencies.downloadRclone] Checking for Local rclone...
+07:05:17.154 PM (UTC): [INFO] [GetDependencies.downloadRclone] Current RCLONE Version 1.68.2
+07:05:17.154 PM (UTC): [INFO] [<Form1_Load>d__35.MoveNext] Attempting to Initalize ADB Server
+07:05:17.161 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: kill-server
+07:05:17.202 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: start-server
+07:05:19.273 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] * daemon not running; starting now at tcp:5037
+* daemon started successfully
+
+
+07:05:19.279 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Attempting to update public config from main.
+07:05:19.819 PM (UTC): [ERROR] [GetDependencies.updatePublicConfig] Failed to update public config from main: The remote server returned an error: (404) Not Found., trying fallback.
+07:05:21.065 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Retrieved updated config from fallback: https://vrpirates.wiki/downloads/vrp-public.json.
+07:05:21.065 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Public config updated successfully from fallback.
+07:05:21.074 PM (UTC): [INFO] [<Form1_Shown>d__36.MoveNext] Using Public Mirror
+07:05:21.875 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Attempting to Update Upload Config
+07:05:22.113 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Retrieved updated config from: https://vrpirates.wiki/downloads/vrp.upload.config
+07:05:22.113 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Upload config updated successfully.
+07:05:22.113 PM (UTC): [INFO] [<Form1_Shown>d__36.MoveNext] Initializing Servers
+07:05:22.113 PM (UTC): [INFO] [<initMirrors>d__83.MoveNext] Looking for Additional Mirrors...
+07:05:22.127 PM (UTC): [INFO] [RCLONE.runRcloneCommand_DownloadConfig] Running Rclone command: listremotes --config vrp.download.config --inplace
+07:05:22.945 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_DownloadConfig] Rclone error: 2025/08/17 00:35:22 NOTICE: Config file "E:\\rookie\\rookie\\rclone\\vrp.download.config" not found - using defaults
+
+
+
+07:05:22.945 PM (UTC): [INFO] [<initMirrors>d__83.MoveNext] Loaded following mirrors: 
+07:05:22.958 PM (UTC): [INFO] [SideloaderRCLONE.UpdateMetadataFromPublic] Downloading Metadata
+07:05:22.958 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Running Rclone command: sync ":http:/meta.7z" "CurrentDirectory"
+07:05:23.581 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_PublicConfig] Rclone error: 2025/08/17 00:35:23 NOTICE: Config file "C:\\Users\\amrit\\AppData\\Roaming\\rclone\\rclone.conf" not found - using defaults
+
+
+
+07:05:23.583 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Extracting Metadata
+07:05:23.584 PM (UTC): [INFO] [Zip.DoExtract] Extract: 7z x "E:\rookie\rookie\meta.7z" -y -o"E:\rookie\rookie\meta" -bsp1
+07:05:25.953 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Updating Metadata
+07:05:26.060 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Initializing Games List
+07:05:26.079 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: devices
+07:05:26.103 PM (UTC): [INFO] [ADB.RunAdbCommandToString] List of devices attached
+
+
+07:05:26.186 PM (UTC): [INFO] [<CheckForDevice>d__44.MoveNext] Devices:
+07:05:26.188 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: shell df
+07:05:26.210 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
+07:05:26.210 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
+07:05:26.234 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
+07:05:26.241 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: shell df
+07:05:26.264 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
