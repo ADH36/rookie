@@ -738,12 +738,65 @@ namespace AndroidSideloader
 
             if (dialog.Show(Handle))
             {
-                progressBar.Style = ProgressBarStyle.Marquee;
+                // Set up continuous progress bar instead of marquee
+                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Value = 0;
+                progressBar.Maximum = 100;
+                
                 string path = dialog.FileName;
                 changeTitle($"Copying {path} obb to device...");
+                
+                // Variables for speed and ETA calculation
+                DateTime startTime = DateTime.Now;
+                long lastBytesTransferred = 0;
+                DateTime lastUpdateTime = DateTime.Now;
+                
+                // Create progress callback to update UI
+                ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                {
+                    if (totalBytes > 0)
+                    {
+                        int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                        
+                        // Calculate speed and ETA
+                        DateTime currentTime = DateTime.Now;
+                        double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                        double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                        
+                        string speedText = "";
+                        string etaText = "";
+                        
+                        if (speed > 0)
+                        {
+                            // Format speed
+                            if (speed > 1024 * 1024)
+                                speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                            else if (speed > 1024)
+                                speedText = $"{speed / 1024:F1} KB/s";
+                            else
+                                speedText = $"{speed:F0} B/s";
+                            
+                            // Calculate ETA
+                            long remainingBytes = totalBytes - bytesTransferred;
+                            double etaSeconds = remainingBytes / speed;
+                            
+                            if (etaSeconds > 60)
+                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                            else
+                                etaText = $"ETA: {etaSeconds:F0}s";
+                        }
+                        
+                        this.Invoke(() =>
+                        {
+                            progressBar.Value = Math.Min(percentage, 100);
+                            changeTitle($"Copying {Path.GetFileName(currentFile)} ({percentage}%) - {speedText} - {etaText}");
+                        });
+                    }
+                };
+                
                 Thread t1 = new Thread(() =>
                 {
-                    output += output += ADB.CopyOBB(path);
+                    output += ADB.CopyOBB(path, progressCallback);
                 })
                 {
                     IsBackground = true
@@ -754,11 +807,23 @@ namespace AndroidSideloader
                 {
                     await Task.Delay(100);
                 }
-                Program.form.changeTitle("Done.");
+                
+                // Reset progress bar and update UI
+                this.Invoke(() =>
+                {
+                    progressBar.Value = 100;
+                    changeTitle("Done.");
+                });
+                
                 showAvailableSpace();
-
                 ShowPrcOutput(output);
-                Program.form.changeTitle(String.Empty);
+                
+                // Reset progress bar and title
+                this.Invoke(() =>
+                {
+                    progressBar.Value = 0;
+                    changeTitle(String.Empty);
+                });
             }
         }
 
@@ -1296,10 +1361,71 @@ namespace AndroidSideloader
             };
             if (dialog.Show(Handle))
             {
+                // Set up continuous progress bar
+                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Value = 0;
+                progressBar.Maximum = 100;
+                
+                // Variables for speed and ETA calculation
+                DateTime startTime = DateTime.Now;
+                long lastBytesTransferred = 0;
+                DateTime lastUpdateTime = DateTime.Now;
+                
+                // Create progress callback to update UI
+                ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                {
+                    if (totalBytes > 0)
+                    {
+                        int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                        
+                        // Calculate speed and ETA
+                        DateTime currentTime = DateTime.Now;
+                        double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                        double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                        
+                        string speedText = "";
+                        string etaText = "";
+                        
+                        if (speed > 0)
+                        {
+                            // Format speed
+                            if (speed > 1024 * 1024)
+                                speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                            else if (speed > 1024)
+                                speedText = $"{speed / 1024:F1} KB/s";
+                            else
+                                speedText = $"{speed:F0} B/s";
+                            
+                            // Calculate ETA
+                            long remainingBytes = totalBytes - bytesTransferred;
+                            double etaSeconds = remainingBytes / speed;
+                            
+                            if (etaSeconds > 60)
+                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                            else
+                                etaText = $"ETA: {etaSeconds:F0}s";
+                        }
+                        
+                        if (InvokeRequired)
+                        {
+                            Invoke(new Action(() =>
+                            {
+                                progressBar.Value = Math.Min(percentage, 100);
+                                changeTitle($"Copying OBB files ({percentage}%) - {speedText} - {etaText} - {Path.GetFileName(currentFile)}");
+                            }));
+                        }
+                        else
+                        {
+                            progressBar.Value = Math.Min(percentage, 100);
+                            changeTitle($"Copying OBB files ({percentage}%) - {speedText} - {etaText} - {Path.GetFileName(currentFile)}");
+                        }
+                    }
+                };
+                
                 Thread t1 = new Thread(() =>
                 {
                     Sideloader.RecursiveOutput = new ProcessOutput(String.Empty, String.Empty);
-                    Sideloader.RecursiveCopyOBB(dialog.FileName);
+                    Sideloader.RecursiveCopyOBB(dialog.FileName, progressCallback);
                 })
                 {
                     IsBackground = true
@@ -1313,6 +1439,10 @@ namespace AndroidSideloader
                     await Task.Delay(100);
                 }
 
+                // Reset progress bar and title
+                progressBar.Value = 0;
+                changeTitle("Done.");
+                
                 ShowPrcOutput(Sideloader.RecursiveOutput);
             }
         }
@@ -1359,11 +1489,63 @@ namespace AndroidSideloader
                     {
                         _ = Logger.Log($"Copying {data} to device");
                         Program.form.changeTitle($"Copying {data} to device...");
+                        
+                        // Set up progress bar for OBB copying
+                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Value = 0;
+                        progressBar.Maximum = 100;
+                        
+                        // Variables for speed and ETA calculation
+                        DateTime startTime = DateTime.Now;
+                        long lastBytesTransferred = 0;
+                        DateTime lastUpdateTime = DateTime.Now;
+                        
+                        // Create progress callback to update UI
+                        ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                        {
+                            if (totalBytes > 0)
+                            {
+                                int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                                
+                                // Calculate speed and ETA
+                                DateTime currentTime = DateTime.Now;
+                                double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                                double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                                
+                                string speedText = "";
+                                string etaText = "";
+                                
+                                if (speed > 0)
+                                {
+                                    // Format speed
+                                    if (speed > 1024 * 1024)
+                                        speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                                    else if (speed > 1024)
+                                        speedText = $"{speed / 1024:F1} KB/s";
+                                    else
+                                        speedText = $"{speed:F0} B/s";
+                                    
+                                    // Calculate ETA
+                                    long remainingBytes = totalBytes - bytesTransferred;
+                                    double etaSeconds = remainingBytes / speed;
+                                    
+                                    if (etaSeconds > 60)
+                                        etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                    else
+                                        etaText = $"ETA: {etaSeconds:F0}s";
+                                }
+                                
+                                this.Invoke(() =>
+                                {
+                                    progressBar.Value = Math.Min(percentage, 100);
+                                    changeTitle($"Copying {Path.GetFileName(currentFile)} ({percentage}%) - {speedText} - {etaText}");
+                                });
+                            }
+                        };
 
                         Thread t2 = new Thread(() =>
-
                         {
-                            output += ADB.CopyOBB(data);
+                            output += ADB.CopyOBB(data, progressCallback);
                         })
                         {
                             IsBackground = true
@@ -1376,6 +1558,8 @@ namespace AndroidSideloader
                         }
 
                         Program.form.changeTitle(String.Empty);
+                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Value = 0;
                         settings.CurrPckg = dir;
                         settings.Save();
                     }
@@ -1425,14 +1609,63 @@ namespace AndroidSideloader
                                 if (Directory.Exists($"{pathname}\\{cmdout}"))
                                 {
                                     _ = Logger.Log($"Copying obb folder to device- {cmdout}");
-                                    Program.form.changeTitle($"Copying obb folder to device...");
+                                    
+                                    // Set up progress bar for OBB copying
+                                    progressBar.Style = ProgressBarStyle.Continuous;
+                                    progressBar.Value = 0;
+                                    progressBar.Maximum = 100;
+                                    
+                                    // Variables for speed and ETA calculation
+                                    DateTime startTime = DateTime.Now;
+                                    long lastBytesTransferred = 0;
+                                    DateTime lastUpdateTime = DateTime.Now;
+                                    
+                                    // Create progress callback to update UI
+                                    ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                                    {
+                                        if (totalBytes > 0)
+                                        {
+                                            int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                                            
+                                            // Calculate speed and ETA
+                                            DateTime currentTime = DateTime.Now;
+                                            double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                                            double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                                            
+                                            string speedText = "";
+                                            string etaText = "";
+                                            
+                                            if (speed > 0)
+                                            {
+                                                // Format speed
+                                                if (speed > 1024 * 1024)
+                                                    speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                                                else if (speed > 1024)
+                                                    speedText = $"{speed / 1024:F1} KB/s";
+                                                else
+                                                    speedText = $"{speed:F0} B/s";
+                                                
+                                                // Calculate ETA
+                                                long remainingBytes = totalBytes - bytesTransferred;
+                                                double etaSeconds = remainingBytes / speed;
+                                                
+                                                if (etaSeconds > 60)
+                                                    etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                                else
+                                                    etaText = $"ETA: {etaSeconds:F0}s";
+                                            }
+                                            
+                                            this.Invoke(() =>
+                                            {
+                                                progressBar.Value = Math.Min(percentage, 100);
+                                                changeTitle($"Copying {cmdout} obb ({percentage}%) - {speedText} - {etaText}");
+                                            });
+                                        }
+                                    };
+                                    
                                     Thread t1 = new Thread(() =>
                                     {
-                                        if (!string.IsNullOrEmpty(cmdout))
-                                        {
-                                            _ = ADB.RunAdbCommandToString($"shell rm -rf \"/sdcard/Android/obb/{cmdout}\" && mkdir \"/sdcard/Android/obb/{cmdout}\"");
-                                        }
-                                        _ = ADB.RunAdbCommandToString($"push \"{pathname}\\{cmdout}\" /sdcard/Android/obb/");
+                                        _ = ADB.CopyOBB($"{pathname}\\{cmdout}", progressCallback);
                                     })
                                     {
                                         IsBackground = true
@@ -1442,6 +1675,11 @@ namespace AndroidSideloader
                                     {
                                         await Task.Delay(100);
                                     }
+                                    
+                                    // Reset progress bar
+                                    progressBar.Style = ProgressBarStyle.Continuous;
+                                    progressBar.Value = 0;
+                                    Program.form.changeTitle("");
                                 }
                             }
 
@@ -1479,11 +1717,63 @@ namespace AndroidSideloader
                     {
                         _ = Logger.Log($"Copying {folder} to device");
                         Program.form.changeTitle($"Copying {folder} to device...");
+                        
+                        // Set up progress bar for OBB copying
+                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Value = 0;
+                        progressBar.Maximum = 100;
+                        
+                        // Variables for speed and ETA calculation
+                        DateTime startTime = DateTime.Now;
+                        long lastBytesTransferred = 0;
+                        DateTime lastUpdateTime = DateTime.Now;
+                        
+                        // Create progress callback to update UI
+                        ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                        {
+                            if (totalBytes > 0)
+                            {
+                                int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                                
+                                // Calculate speed and ETA
+                                DateTime currentTime = DateTime.Now;
+                                double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                                double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                                
+                                string speedText = "";
+                                string etaText = "";
+                                
+                                if (speed > 0)
+                                {
+                                    // Format speed
+                                    if (speed > 1024 * 1024)
+                                        speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                                    else if (speed > 1024)
+                                        speedText = $"{speed / 1024:F1} KB/s";
+                                    else
+                                        speedText = $"{speed:F0} B/s";
+                                    
+                                    // Calculate ETA
+                                    long remainingBytes = totalBytes - bytesTransferred;
+                                    double etaSeconds = remainingBytes / speed;
+                                    
+                                    if (etaSeconds > 60)
+                                        etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                    else
+                                        etaText = $"ETA: {etaSeconds:F0}s";
+                                }
+                                
+                                this.Invoke(() =>
+                                {
+                                    progressBar.Value = Math.Min(percentage, 100);
+                                    changeTitle($"Copying {Path.GetFileName(currentFile)} ({percentage}%) - {speedText} - {etaText}");
+                                });
+                            }
+                        };
 
                         Thread t2 = new Thread(() =>
-
                         {
-                            output += ADB.CopyOBB(folder);
+                            output += ADB.CopyOBB(folder, progressCallback);
                         })
                         {
                             IsBackground = true
@@ -1578,14 +1868,63 @@ namespace AndroidSideloader
                             if (Directory.Exists($"{pathname}\\{cmdout}"))
                             {
                                 _ = Logger.Log($"Copying obb folder to device- {cmdout}");
-                                Program.form.changeTitle($"Copying obb folder to device...");
+                                
+                                // Set up progress bar for OBB copying
+                                progressBar.Style = ProgressBarStyle.Continuous;
+                                progressBar.Value = 0;
+                                progressBar.Maximum = 100;
+                                
+                                // Variables for speed and ETA calculation
+                                DateTime startTime = DateTime.Now;
+                                long lastBytesTransferred = 0;
+                                DateTime lastUpdateTime = DateTime.Now;
+                                
+                                // Create progress callback to update UI
+                                ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                                {
+                                    if (totalBytes > 0)
+                                    {
+                                        int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                                        
+                                        // Calculate speed and ETA
+                                        DateTime currentTime = DateTime.Now;
+                                        double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                                        double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                                        
+                                        string speedText = "";
+                                        string etaText = "";
+                                        
+                                        if (speed > 0)
+                                        {
+                                            // Format speed
+                                            if (speed > 1024 * 1024)
+                                                speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                                            else if (speed > 1024)
+                                                speedText = $"{speed / 1024:F1} KB/s";
+                                            else
+                                                speedText = $"{speed:F0} B/s";
+                                            
+                                            // Calculate ETA
+                                            long remainingBytes = totalBytes - bytesTransferred;
+                                            double etaSeconds = remainingBytes / speed;
+                                            
+                                            if (etaSeconds > 60)
+                                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                            else
+                                                etaText = $"ETA: {etaSeconds:F0}s";
+                                        }
+                                        
+                                        this.Invoke(() =>
+                                        {
+                                            progressBar.Value = Math.Min(percentage, 100);
+                                            changeTitle($"Copying {cmdout} obb ({percentage}%) - {speedText} - {etaText}");
+                                        });
+                                    }
+                                };
+                                
                                 Thread t2 = new Thread(() =>
                                 {
-                                    if (!string.IsNullOrEmpty(cmdout))
-                                    {
-                                        _ = ADB.RunAdbCommandToString($"shell rm -rf \"/sdcard/Android/obb/{cmdout}\" && mkdir \"/sdcard/Android/obb/{cmdout}\"");
-                                    }
-                                    _ = ADB.RunAdbCommandToString($"push \"{pathname}\\{cmdout}\" /sdcard/Android/obb/");
+                                    _ = ADB.CopyOBB($"{pathname}\\{cmdout}", progressCallback);
                                 })
                                 {
                                     IsBackground = true
@@ -1596,6 +1935,9 @@ namespace AndroidSideloader
                                     await Task.Delay(100);
                                 }
 
+                                // Reset progress bar
+                                progressBar.Style = ProgressBarStyle.Continuous;
+                                progressBar.Value = 0;
                                 changeTitle(" \n\n");
                             }
                         }
@@ -1612,15 +1954,68 @@ namespace AndroidSideloader
                         File.Copy(data, Path.Combine(foldername, filename));
                         path = foldername;
 
+                        _ = Logger.Log($"Copying obb folder to device- {path}");
+                        
+                        // Set up progress bar for OBB copying
+                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Value = 0;
+                        progressBar.Maximum = 100;
+                        
+                        // Variables for speed and ETA calculation
+                        DateTime startTime = DateTime.Now;
+                        long lastBytesTransferred = 0;
+                        DateTime lastUpdateTime = DateTime.Now;
+                        
+                        // Create progress callback to update UI
+                        ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                        {
+                            if (totalBytes > 0)
+                            {
+                                int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                                
+                                // Calculate speed and ETA
+                                DateTime currentTime = DateTime.Now;
+                                double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                                double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                                
+                                string speedText = "";
+                                string etaText = "";
+                                
+                                if (speed > 0)
+                                {
+                                    // Format speed
+                                    if (speed > 1024 * 1024)
+                                        speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                                    else if (speed > 1024)
+                                        speedText = $"{speed / 1024:F1} KB/s";
+                                    else
+                                        speedText = $"{speed:F0} B/s";
+                                    
+                                    // Calculate ETA
+                                    long remainingBytes = totalBytes - bytesTransferred;
+                                    double etaSeconds = remainingBytes / speed;
+                                    
+                                    if (etaSeconds > 60)
+                                        etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                    else
+                                        etaText = $"ETA: {etaSeconds:F0}s";
+                                }
+                                
+                                this.Invoke(() =>
+                                {
+                                    progressBar.Value = Math.Min(percentage, 100);
+                                    changeTitle($"Copying {filename} obb ({percentage}%) - {speedText} - {etaText}");
+                                });
+                            }
+                        };
+                        
                         Thread t1 = new Thread(() =>
                         {
-                            output += ADB.CopyOBB(path);
+                            output += ADB.CopyOBB(path, progressCallback);
                         })
                         {
                             IsBackground = true
                         };
-                        _ = Logger.Log($"Copying obb folder to device- {path}");
-                        Program.form.changeTitle($"Copying obb folder to device ({filename})");
                         t1.Start();
 
                         while (t1.IsAlive)
@@ -3045,12 +3440,63 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                         if (Directory.Exists($"{settings.DownloadDir}\\{gameName}\\{packagename}"))
                                         {
                                             deleteOBB(packagename);
+                                            
+                                            // Set up progress bar for OBB copying
+                                            progressBar.Style = ProgressBarStyle.Continuous;
+                                            progressBar.Value = 0;
+                                            progressBar.Maximum = 100;
+                                            
+                                            // Variables for speed and ETA calculation
+                                            DateTime startTime = DateTime.Now;
+                                            long lastBytesTransferred = 0;
+                                            DateTime lastUpdateTime = DateTime.Now;
+                                            
+                                            // Create progress callback to update UI
+                                            ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                                            {
+                                                if (totalBytes > 0)
+                                                {
+                                                    int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                                                    
+                                                    // Calculate speed and ETA
+                                                    DateTime currentTime = DateTime.Now;
+                                                    double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                                                    double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                                                    
+                                                    string speedText = "";
+                                                    string etaText = "";
+                                                    
+                                                    if (speed > 0)
+                                                    {
+                                                        // Format speed
+                                                        if (speed > 1024 * 1024)
+                                                            speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                                                        else if (speed > 1024)
+                                                            speedText = $"{speed / 1024:F1} KB/s";
+                                                        else
+                                                            speedText = $"{speed:F0} B/s";
+                                                        
+                                                        // Calculate ETA
+                                                        long remainingBytes = totalBytes - bytesTransferred;
+                                                        double etaSeconds = remainingBytes / speed;
+                                                        
+                                                        if (etaSeconds > 60)
+                                                            etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                                                        else
+                                                            etaText = $"ETA: {etaSeconds:F0}s";
+                                                    }
+                                                    
+                                                    this.Invoke(() =>
+                                                    {
+                                                        progressBar.Value = Math.Min(percentage, 100);
+                                                        changeTitle($"Copying {packagename} obb ({percentage}%) - {speedText} - {etaText}");
+                                                    });
+                                                }
+                                            };
+                                            
                                             Thread obbThread = new Thread(() =>
                                             {
-                                                changeTitle($"Copying {packagename} obb to device...");
-                                                ADB.RunAdbCommandToString($"shell mkdir \"/sdcard/Android/obb/{packagename}\"");
-                                                output += ADB.RunAdbCommandToString($"push \"{settings.DownloadDir}\\{gameName}\\{packagename}\" \"/sdcard/Android/obb\"");
-                                                Program.form.changeTitle("");
+                                                output += ADB.CopyOBB($"{settings.DownloadDir}\\{gameName}\\{packagename}", progressCallback);
                                             })
                                             {
                                                 IsBackground = true
@@ -3060,6 +3506,11 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                             {
                                                 await Task.Delay(100);
                                             }
+                                            
+                                            // Reset progress bar
+                                            progressBar.Style = ProgressBarStyle.Continuous;
+                                            progressBar.Value = 0;
+                                            Program.form.changeTitle("");
                                             if (!nodeviceonstart | DeviceConnected)
                                             {
                                                 if (!output.Output.Contains("offline"))
@@ -3207,9 +3658,71 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
 
             await Task.Run(() =>
             {
-                changeTitle($"Copying {packageName} obb to device...");
-                output += ADB.RunAdbCommandToString($"push \"{obbFolderPath}\" \"{OBBFolderPath}\"");
-                Program.form.changeTitle("");
+                // Set up progress bar for OBB copying
+                this.Invoke(() =>
+                {
+                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Value = 0;
+                    progressBar.Maximum = 100;
+                });
+                
+                // Variables for speed and ETA calculation
+                DateTime startTime = DateTime.Now;
+                long lastBytesTransferred = 0;
+                DateTime lastUpdateTime = DateTime.Now;
+                
+                // Create progress callback to update UI
+                ADB.ProgressCallback progressCallback = (bytesTransferred, totalBytes, currentFile) =>
+                {
+                    if (totalBytes > 0)
+                    {
+                        int percentage = (int)((bytesTransferred * 100) / totalBytes);
+                        
+                        // Calculate speed and ETA
+                        DateTime currentTime = DateTime.Now;
+                        double elapsedSeconds = (currentTime - startTime).TotalSeconds;
+                        double speed = elapsedSeconds > 0 ? bytesTransferred / elapsedSeconds : 0;
+                        
+                        string speedText = "";
+                        string etaText = "";
+                        
+                        if (speed > 0)
+                        {
+                            // Format speed
+                            if (speed > 1024 * 1024)
+                                speedText = $"{speed / (1024 * 1024):F1} MB/s";
+                            else if (speed > 1024)
+                                speedText = $"{speed / 1024:F1} KB/s";
+                            else
+                                speedText = $"{speed:F0} B/s";
+                            
+                            // Calculate ETA
+                            long remainingBytes = totalBytes - bytesTransferred;
+                            double etaSeconds = remainingBytes / speed;
+                            
+                            if (etaSeconds > 60)
+                                etaText = $"ETA: {TimeSpan.FromSeconds(etaSeconds):mm\\:ss}";
+                            else
+                                etaText = $"ETA: {etaSeconds:F0}s";
+                        }
+                        
+                        this.Invoke(() =>
+                        {
+                            progressBar.Value = Math.Min(percentage, 100);
+                            changeTitle($"Copying {packageName} obb ({percentage}%) - {speedText} - {etaText}");
+                        });
+                    }
+                };
+                
+                output += ADB.CopyOBB(obbFolderPath, progressCallback);
+                
+                // Reset progress bar
+                this.Invoke(() =>
+                {
+                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Value = 0;
+                    changeTitle("");
+                });
             });
 
             return await compareOBBSizes(packageName, gameName, output);

@@ -1,4 +1,4 @@
-﻿using JR.Utils.GUI.Forms;
+using JR.Utils.GUI.Forms;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -140,19 +140,80 @@ namespace AndroidSideloader
         //Recursive copy any obb folder
         public static void RecursiveCopyOBB(string FolderPath)
         {
+            RecursiveCopyOBB(FolderPath, null);
+        }
+
+        //Recursive copy any obb folder with progress tracking
+        public static void RecursiveCopyOBB(string FolderPath, ADB.ProgressCallback progressCallback)
+        {
+            try
+            {
+                // Calculate total size for progress tracking
+                long totalSize = 0;
+                long processedSize = 0;
+                
+                if (progressCallback != null)
+                {
+                    totalSize = CalculateFolderSize(FolderPath);
+                }
+
+                RecursiveCopyOBBInternal(FolderPath, progressCallback, totalSize, ref processedSize);
+            }
+            catch (Exception ex) { _ = Logger.Log(ex.Message, LogLevel.ERROR); }
+        }
+
+        private static void RecursiveCopyOBBInternal(string FolderPath, ADB.ProgressCallback progressCallback, long totalSize, ref long processedSize)
+        {
             try
             {
                 foreach (string f in Directory.GetFiles(FolderPath))
                 {
-                    RecursiveOutput += ADB.CopyOBB(f);
+                    if (progressCallback != null)
+                    {
+                        FileInfo fileInfo = new FileInfo(f);
+                        long fileSize = fileInfo.Length;
+                        
+                        // Create a wrapper callback that updates the processed size
+                        ADB.ProgressCallback fileCallback = (bytesTransferred, fileTotalBytes, currentFile) =>
+                        {
+                            long currentProcessed = processedSize + bytesTransferred;
+                            progressCallback(currentProcessed, totalSize, currentFile);
+                        };
+                        
+                        RecursiveOutput += ADB.CopyOBB(f, fileCallback);
+                        processedSize += fileSize;
+                    }
+                    else
+                    {
+                        RecursiveOutput += ADB.CopyOBB(f);
+                    }
                 }
 
                 foreach (string d in Directory.GetDirectories(FolderPath))
                 {
-                    RecursiveCopyOBB(d);
+                    RecursiveCopyOBBInternal(d, progressCallback, totalSize, ref processedSize);
                 }
             }
             catch (Exception ex) { _ = Logger.Log(ex.Message, LogLevel.ERROR); }
+        }
+
+        private static long CalculateFolderSize(string folderPath)
+        {
+            long size = 0;
+            try
+            {
+                string[] files = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
+                foreach (string file in files)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    size += fileInfo.Length;
+                }
+            }
+            catch (Exception ex)
+            {
+                _ = Logger.Log($"Error calculating folder size: {ex.Message}", LogLevel.ERROR);
+            }
+            return size;
         }
 
         // Removes the game package and its OBB + Data Folders.
