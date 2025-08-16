@@ -174,7 +174,7 @@ namespace AndroidSideloader
             this.progressBar.Value = 0;
             this.progressBar.Maximum = 100;
             this.progressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.progressBar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.progressBar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)));
             this.progressBar.ShowPercentage = true;
             this.progressBar.CornerRadius = 10;
             // 
@@ -474,7 +474,7 @@ namespace AndroidSideloader
             this.lblUpdateAvailable.Name = "lblUpdateAvailable";
             this.lblUpdateAvailable.Size = new System.Drawing.Size(151, 20);
             this.lblUpdateAvailable.TabIndex = 90;
-            this.lblUpdateAvailable.Text = "𝖴𝖯𝖣𝖠𝖳𝖤 𝖠𝖵𝖠𝖨𝖫𝖠𝖡𝖫𝖤";
+            this.lblUpdateAvailable.Text = "???????????? ??????????????????";
             this.lblUpdateAvailable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblUpdateAvailable.Click += new System.EventHandler(this.updateAvailable_Click);
             // 
@@ -491,7 +491,7 @@ namespace AndroidSideloader
             this.lblUpToDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblUpToDate.Size = new System.Drawing.Size(96, 20);
             this.lblUpToDate.TabIndex = 90;
-            this.lblUpToDate.Text = "𝖴𝖯 𝖳𝖮 𝖣𝖠𝖳𝖤";
+            this.lblUpToDate.Text = "???????? ???????? ????????????????";
             this.lblUpToDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblUpToDate.Click += new System.EventHandler(this.lblUpToDate_Click);
             // 
@@ -562,7 +562,7 @@ namespace AndroidSideloader
             this.lblNeedsDonate.Name = "lblNeedsDonate";
             this.lblNeedsDonate.Size = new System.Drawing.Size(142, 20);
             this.lblNeedsDonate.TabIndex = 90;
-            this.lblNeedsDonate.Text = "𝖭𝖤𝖶𝖤𝖱 𝖳𝖧𝖠𝖭 𝖫𝖨𝖲𝖳";
+            this.lblNeedsDonate.Text = "???????????????????? ???????????????? ????????????????";
             this.lblNeedsDonate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblNeedsDonate.Click += new System.EventHandler(this.lblNeedsDonate_Click);
             // 
@@ -775,7 +775,7 @@ namespace AndroidSideloader
             // 
             // copyBulkObbButton
             // 
-            this.copyBulkObbButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.copyBulkObbButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)));
             this.copyBulkObbButton.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::AndroidSideloader.Properties.Settings.Default, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.copyBulkObbButton.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::AndroidSideloader.Properties.Settings.Default, "FontColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.copyBulkObbButton.Dock = System.Windows.Forms.DockStyle.Top;
@@ -796,7 +796,7 @@ namespace AndroidSideloader
             // 
             // aboutBtn
             // 
-            this.aboutBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.aboutBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)));
             this.aboutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.aboutBtn.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::AndroidSideloader.Properties.Settings.Default, "FontColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.aboutBtn.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::AndroidSideloader.Properties.Settings.Default, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -809,7 +809,7 @@ namespace AndroidSideloader
             this.aboutBtn.Name = "aboutBtn";
             this.aboutBtn.Size = new System.Drawing.Size(221, 28);
             this.aboutBtn.TabIndex = 5;
-            this.aboutBtn.Text = " ?   ABOUT";
+            this.aboutBtn.Text = " ? ??? ABOUT";
             this.aboutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.aboutBtn_Tooltip.SetToolTip(this.aboutBtn, "About the Rookie App and it\'s amazing creators and contributors");
             this.aboutBtn.UseVisualStyleBackColor = false;
@@ -831,7 +831,7 @@ namespace AndroidSideloader
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(221, 28);
             this.settingsButton.TabIndex = 4;
-            this.settingsButton.Text = "⚙ SETTINGS";
+            this.settingsButton.Text = "??? SETTINGS";
             this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.settingsButton_Tooltip.SetToolTip(this.settingsButton, "Rookie App Settings");
             this.settingsButton.UseVisualStyleBackColor = false;
@@ -839,7 +839,7 @@ namespace AndroidSideloader
             // 
             // QuestOptionsButton
             // 
-            this.QuestOptionsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.QuestOptionsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)));
             this.QuestOptionsButton.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::AndroidSideloader.Properties.Settings.Default, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.QuestOptionsButton.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::AndroidSideloader.Properties.Settings.Default, "FontColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.QuestOptionsButton.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1047,7 +1047,7 @@ namespace AndroidSideloader
             this.deviceDrop.Name = "deviceDrop";
             this.deviceDrop.Size = new System.Drawing.Size(224, 32);
             this.deviceDrop.TabIndex = 1;
-            this.deviceDrop.Text = "▶ DEVICE ◀";
+            this.deviceDrop.Text = "??? DEVICE ???";
             this.deviceDrop.UseVisualStyleBackColor = false;
             this.deviceDrop.Click += new System.EventHandler(this.deviceDropContainer_Click);
             // 
@@ -1085,7 +1085,7 @@ namespace AndroidSideloader
             this.sideloadDrop.Name = "sideloadDrop";
             this.sideloadDrop.Size = new System.Drawing.Size(224, 32);
             this.sideloadDrop.TabIndex = 1;
-            this.sideloadDrop.Text = "▶ SIDELOAD ◀";
+            this.sideloadDrop.Text = "??? SIDELOAD ???";
             this.sideloadDrop.UseVisualStyleBackColor = false;
             this.sideloadDrop.Click += new System.EventHandler(this.sideloadContainer_Click);
             // 
@@ -1123,7 +1123,7 @@ namespace AndroidSideloader
             this.installedAppsMenu.Name = "installedAppsMenu";
             this.installedAppsMenu.Size = new System.Drawing.Size(224, 32);
             this.installedAppsMenu.TabIndex = 1;
-            this.installedAppsMenu.Text = "▶ INSTALLED APPS ◀";
+            this.installedAppsMenu.Text = "??? INSTALLED APPS ???";
             this.installedAppsMenu.UseVisualStyleBackColor = false;
             this.installedAppsMenu.Click += new System.EventHandler(this.installedAppsMenuContainer_Click);
             // 
@@ -1162,7 +1162,7 @@ namespace AndroidSideloader
             this.backupDrop.Name = "backupDrop";
             this.backupDrop.Size = new System.Drawing.Size(224, 32);
             this.backupDrop.TabIndex = 2;
-            this.backupDrop.Text = "▶ BACKUP / RESTORE ◀";
+            this.backupDrop.Text = "??? BACKUP / RESTORE ???";
             this.backupDrop.UseVisualStyleBackColor = false;
             this.backupDrop.Click += new System.EventHandler(this.backupDrop_Click);
             // 
@@ -1200,7 +1200,7 @@ namespace AndroidSideloader
             this.otherDrop.Name = "otherDrop";
             this.otherDrop.Size = new System.Drawing.Size(224, 32);
             this.otherDrop.TabIndex = 3;
-            this.otherDrop.Text = "▶ OTHER ◀";
+            this.otherDrop.Text = "??? OTHER ???";
             this.otherDrop.UseVisualStyleBackColor = false;
             this.otherDrop.Click += new System.EventHandler(this.otherDrop_Click);
             // 
@@ -1450,7 +1450,7 @@ namespace AndroidSideloader
             this.downloadInstallGameButton.Stroke = true;
             this.downloadInstallGameButton.StrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.downloadInstallGameButton.TabIndex = 94;
-            this.downloadInstallGameButton.Text = "Download and Install Game/Add To Queue ⮩ ";
+            this.downloadInstallGameButton.Text = "Download and Install Game/Add To Queue ??? ";
             this.downloadInstallGameButton.Transparency = false;
             this.downloadInstallGameButton.Click += new System.EventHandler(this.downloadInstallGameButton_Click);
             this.downloadInstallGameButton.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
