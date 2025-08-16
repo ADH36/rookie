@@ -326,13 +326,125 @@ namespace AndroidSideloader
             return ret;
         }
 
+        // Progress callback delegate for file transfer operations
+        public delegate void ProgressCallback(long bytesTransferred, long totalBytes, string currentFile);
+
         public static ProcessOutput CopyOBB(string path)
+        {
+            return CopyOBB(path, null);
+        }
+
+        public static ProcessOutput CopyOBB(string path, ProgressCallback progressCallback)
         {
             string folder = Path.GetFileName(path);
             string lastFolder = Path.GetFileName(path);
-            return folder.Contains(".")
-                ? RunAdbCommandToString($"shell rm -rf \"/sdcard/Android/obb/{lastFolder}\" && mkdir \"/sdcard/Android/obb/{lastFolder}\"") + RunAdbCommandToString($"push \"{path}\" \"/sdcard/Android/obb\"")
-                : new ProcessOutput("No OBB Folder found");
+            
+            if (!folder.Contains("."))
+            {
+                return new ProcessOutput("No OBB Folder found");
+            }
+
+            ProcessOutput result = new ProcessOutput("", "");
+            
+            // Calculate total size for progress tracking
+            long totalSize = 0;
+            if (progressCallback != null)
+            {
+                totalSize = CalculateDirectorySize(path);
+            }
+
+            // Remove existing folder and create new one
+            result += RunAdbCommandToString($"shell rm -rf \"/sdcard/Android/obb/{lastFolder}\" && mkdir \"/sdcard/Android/obb/{lastFolder}\"");
+            
+            // Copy with progress tracking if callback is provided
+            if (progressCallback != null && Directory.Exists(path))
+            {
+                result += CopyOBBWithProgress(path, "/sdcard/Android/obb", totalSize, progressCallback);
+            }
+            else
+            {
+                result += RunAdbCommandToString($"push \"{path}\" \"/sdcard/Android/obb\"");
+            }
+            
+            return result;
+        }
+
+        private static ProcessOutput CopyOBBWithProgress(string sourcePath, string destPath, long totalSize, ProgressCallback progressCallback)
+        {
+            ProcessOutput result = new ProcessOutput("", "");
+            long bytesTransferred = 0;
+            
+            if (File.Exists(sourcePath))
+            {
+                // Single file
+                FileInfo fileInfo = new FileInfo(sourcePath);
+                progressCallback?.Invoke(0, totalSize, Path.GetFileName(sourcePath));
+                result += RunAdbCommandToString($"push \"{sourcePath}\" \"{destPath}\"");
+                bytesTransferred += fileInfo.Length;
+                progressCallback?.Invoke(bytesTransferred, totalSize, Path.GetFileName(sourcePath));
+            }
+            else if (Directory.Exists(sourcePath))
+            {
+                // Directory - copy files recursively
+                result += CopyDirectoryWithProgress(sourcePath, destPath, ref bytesTransferred, totalSize, progressCallback);
+            }
+            
+            return result;
+        }
+
+        private static ProcessOutput CopyDirectoryWithProgress(string sourceDir, string destDir, ref long bytesTransferred, long totalSize, ProgressCallback progressCallback)
+        {
+            ProcessOutput result = new ProcessOutput("", "");
+            
+            // Get all files in the directory
+            string[] files = Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories);
+            
+            foreach (string file in files)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                string relativePath = Path.GetRelativePath(sourceDir, file);
+                string fileName = Path.GetFileName(file);
+                
+                progressCallback?.Invoke(bytesTransferred, totalSize, fileName);
+                
+                // Copy individual file
+                result += RunAdbCommandToString($"push \"{file}\" \"{destDir}/{Path.GetFileName(sourceDir)}/{relativePath.Replace('\\', '/')}\"");
+                
+                bytesTransferred += fileInfo.Length;
+                progressCallback?.Invoke(bytesTransferred, totalSize, fileName);
+            }
+            
+            return result;
+        }
+
+        public static long CalculateDirectorySize(string path)
+        {
+            if (File.Exists(path))
+            {
+                return new FileInfo(path).Length;
+            }
+            
+            if (!Directory.Exists(path))
+            {
+                return 0;
+            }
+            
+            long size = 0;
+            try
+            {
+                string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+                foreach (string file in files)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    size += fileInfo.Length;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Error calculating directory size: {ex.Message}", LogLevel.ERROR);
+            }
+            
+            return size;
         }
     }
 }
