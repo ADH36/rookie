@@ -196,7 +196,7 @@ namespace AndroidSideloader.Utilities
         {
             // Modern typography - Segoe UI for better readability
             FontStyle = new Font("Segoe UI", 10f);
-            BigFontStyle = new Font("Segoe UI", 13f, FontStyle.Bold);
+            BigFontStyle = new Font("Segoe UI", 13f, System.Drawing.FontStyle.Bold);
             
             // Modern color scheme with better contrast and visual hierarchy
             FontColor = Color.FromArgb(240, 240, 240);  // Softer white for better readability

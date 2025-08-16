@@ -181,6 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ADB.cs" />
+    <Compile Include="AnimationHelper.cs" />
+    <Compile Include="ResponsiveHelper.cs" />
     <Compile Include="RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>

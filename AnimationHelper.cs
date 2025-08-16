@@ -8,41 +8,41 @@ namespace AndroidSideloader
     public static class AnimationHelper
     {
         /// <summary>
-        /// Smoothly fades a control in or out
+        /// Smoothly fades a form in or out
         /// </summary>
-        /// <param name="control">The control to animate</param>
+        /// <param name="form">The form to animate</param>
         /// <param name="fadeIn">True to fade in, false to fade out</param>
         /// <param name="duration">Animation duration in milliseconds</param>
-        public static async Task FadeAsync(Control control, bool fadeIn, int duration = 300)
+        public static async Task FadeAsync(Form form, bool fadeIn, int duration = 300)
         {
-            if (control == null || control.IsDisposed) return;
+            if (form == null || form.IsDisposed) return;
 
             const int steps = 30;
-            const int stepDelay = duration / steps;
+            int stepDelay = duration / steps;
             
             double startOpacity = fadeIn ? 0.0 : 1.0;
             double endOpacity = fadeIn ? 1.0 : 0.0;
             double opacityStep = (endOpacity - startOpacity) / steps;
 
-            if (fadeIn && !control.Visible)
+            if (fadeIn && !form.Visible)
             {
-                control.Opacity = 0.0;
-                control.Visible = true;
+                form.Opacity = 0.0;
+                form.Visible = true;
             }
 
             for (int i = 0; i <= steps; i++)
             {
-                if (control.IsDisposed) return;
+                if (form.IsDisposed) return;
                 
                 double opacity = startOpacity + (opacityStep * i);
-                control.Opacity = Math.Max(0.0, Math.Min(1.0, opacity));
+                form.Opacity = Math.Max(0.0, Math.Min(1.0, opacity));
                 
                 await Task.Delay(stepDelay);
             }
 
             if (!fadeIn)
             {
-                control.Visible = false;
+                form.Visible = false;
             }
         }
 
@@ -57,7 +57,7 @@ namespace AndroidSideloader
             if (control == null || control.IsDisposed) return;
 
             const int steps = 40;
-            const int stepDelay = duration / steps;
+            int stepDelay = duration / steps;
             
             Point startLocation = control.Location;
             int deltaX = targetLocation.X - startLocation.X;
@@ -150,7 +150,7 @@ namespace AndroidSideloader
             if (control == null || control.IsDisposed) return;
 
             const int steps = 30;
-            const int stepDelay = duration / steps;
+            int stepDelay = duration / steps;
             
             Color startColor = control.BackColor;
             

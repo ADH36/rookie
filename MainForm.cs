@@ -233,7 +233,7 @@ namespace AndroidSideloader
 
             // Initialize responsive design
             ResponsiveHelper.InitializeResponsive(this);
-            ResponsiveHelper.SetFormSizeConstraints(this, new Size(1067, 760));
+            ResponsiveHelper.SetFormSizeConstraints(this, new System.Drawing.Size(1067, 760));
 
             if (isOffline)
             {
@@ -395,7 +395,7 @@ namespace AndroidSideloader
 
             SplashScreen.Close();
 
-            progressBar.Style = ModernProgressIndicator.ProgressStyle.Marquee;
+            progressBar.Style = ProgressStyle.Marquee;
 
             if (!debugMode && settings.CheckForUpdates && !isOffline)
             {
@@ -503,7 +503,7 @@ namespace AndroidSideloader
                 });
             }
 
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
             changeTitle("Populating Game Update List, Almost There!");
 
             _ = await CheckForDevice();
@@ -769,7 +769,7 @@ namespace AndroidSideloader
             if (dialog.Show(Handle))
             {
                 // Set up continuous progress bar instead of marquee
-                progressBar.Style = ModernProgressIndicator.ProgressStyle.Continuous;
+                progressBar.Style = ProgressStyle.Continuous;
                 progressBar.Value = 0;
                 progressBar.Maximum = 100;
                 
@@ -1209,7 +1209,7 @@ namespace AndroidSideloader
                 if (!isworking)
                 {
                     isworking = true;
-                    progressBar.Style = ProgressBarStyle.Marquee;
+                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
                     string HWID = SideloaderUtilities.UUID();
                     string GameName = m_combo.SelectedItem.ToString();
                     string packageName = Sideloader.gameNameToPackageName(GameName);
@@ -1271,7 +1271,7 @@ namespace AndroidSideloader
                     changeTitle("Zipping extracted application...");
                     string cmd = $"7z a -mx1 \"{gameZipName}\" .\\{packageName}\\*";
                     string path = $"{settings.MainDir}\\7z.exe";
-                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                     Thread t4 = new Thread(() =>
                     {
                         _ = ADB.RunCommandToString(cmd, path);
@@ -1364,7 +1364,7 @@ namespace AndroidSideloader
                 Sideloader.BackupGame(packagename);
             }
             ProcessOutput output = new ProcessOutput("", "");
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
             Thread t1 = new Thread(() =>
             {
                 output += Sideloader.UninstallGame(packagename);
@@ -1378,7 +1378,7 @@ namespace AndroidSideloader
 
             ShowPrcOutput(output);
             showAvailableSpace();
-            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
             m_combo.Items.RemoveAt(m_combo.SelectedIndex);
         }
 
@@ -1392,7 +1392,7 @@ namespace AndroidSideloader
             if (dialog.Show(Handle))
             {
                 // Set up continuous progress bar
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                 progressBar.Value = 0;
                 progressBar.Maximum = 100;
                 
@@ -1494,7 +1494,7 @@ namespace AndroidSideloader
             DragDropLbl.Visible = false;
             ProcessOutput output = new ProcessOutput(String.Empty, String.Empty);
             ADB.DeviceID = GetDeviceID();
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
             CurrPCKG = String.Empty;
             string[] datas = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string data in datas)
@@ -1521,7 +1521,7 @@ namespace AndroidSideloader
                         Program.form.changeTitle($"Copying {data} to device...");
                         
                         // Set up progress bar for OBB copying
-                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                         progressBar.Value = 0;
                         progressBar.Maximum = 100;
                         
@@ -1588,7 +1588,7 @@ namespace AndroidSideloader
                         }
 
                         Program.form.changeTitle(String.Empty);
-                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                         progressBar.Value = 0;
                         settings.CurrPckg = dir;
                         settings.Save();
@@ -1641,7 +1641,7 @@ namespace AndroidSideloader
                                     _ = Logger.Log($"Copying obb folder to device- {cmdout}");
                                     
                                     // Set up progress bar for OBB copying
-                                    progressBar.Style = ProgressBarStyle.Continuous;
+                                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                     progressBar.Value = 0;
                                     progressBar.Maximum = 100;
                                     
@@ -1707,7 +1707,7 @@ namespace AndroidSideloader
                                     }
                                     
                                     // Reset progress bar
-                                    progressBar.Style = ProgressBarStyle.Continuous;
+                                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                     progressBar.Value = 0;
                                     Program.form.changeTitle("");
                                 }
@@ -1749,7 +1749,7 @@ namespace AndroidSideloader
                         Program.form.changeTitle($"Copying {folder} to device...");
                         
                         // Set up progress bar for OBB copying
-                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                         progressBar.Value = 0;
                         progressBar.Maximum = 100;
                         
@@ -1900,7 +1900,7 @@ namespace AndroidSideloader
                                 _ = Logger.Log($"Copying obb folder to device- {cmdout}");
                                 
                                 // Set up progress bar for OBB copying
-                                progressBar.Style = ProgressBarStyle.Continuous;
+                                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                 progressBar.Value = 0;
                                 progressBar.Maximum = 100;
                                 
@@ -1966,7 +1966,7 @@ namespace AndroidSideloader
                                 }
 
                                 // Reset progress bar
-                                progressBar.Style = ProgressBarStyle.Continuous;
+                                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                 progressBar.Value = 0;
                                 changeTitle(" \n\n");
                             }
@@ -1987,7 +1987,7 @@ namespace AndroidSideloader
                         _ = Logger.Log($"Copying obb folder to device- {path}");
                         
                         // Set up progress bar for OBB copying
-                        progressBar.Style = ProgressBarStyle.Continuous;
+                        progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                         progressBar.Value = 0;
                         progressBar.Maximum = 100;
                         
@@ -2109,7 +2109,7 @@ namespace AndroidSideloader
                 }
             }
 
-            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
 
             showAvailableSpace();
 
@@ -2191,7 +2191,7 @@ namespace AndroidSideloader
             //This is for the black list, but temporarily will be the whitelist
             //This list contains games that we are actually going to upload
             newGamesToUploadList = whitelistItems.Intersect(installedGames, StringComparer.OrdinalIgnoreCase).ToList();
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
             if (SideloaderRCLONE.games.Count > 5)
             {
                 Thread t1 = new Thread(() =>
@@ -2512,7 +2512,7 @@ namespace AndroidSideloader
             {
                 await Task.Delay(100);
             }
-            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
 
             if (either && !updatesNotified && !noAppCheck)
             {
@@ -2672,7 +2672,7 @@ namespace AndroidSideloader
 
         public async Task extractAndPrepareGameToUploadAsync(string GameName, string packagename, ulong installedVersionInt, bool isupdate)
         {
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
 
             Thread t1 = new Thread(() =>
             {
@@ -2704,7 +2704,7 @@ namespace AndroidSideloader
 
             string HWID = SideloaderUtilities.UUID();
             File.WriteAllText($"{settings.MainDir}\\{packagename}\\HWID.txt", HWID);
-            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
             UploadGame game = new UploadGame
             {
                 isUpdate = isupdate,
@@ -2904,7 +2904,7 @@ namespace AndroidSideloader
             if (isLoading) { return; }
             isLoading = true;
 
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
             devicesbutton_Click(sender, e);
 
             await initMirrors();
@@ -2917,7 +2917,7 @@ namespace AndroidSideloader
             changeTitle(titleMessage);
             if (isLoading) { return; }
             isLoading = true;
-            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
 
             Thread t1 = new Thread(() =>
             {
@@ -3045,10 +3045,10 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                     showAvailableSpace();
                     listAppsBtn();
                 }
-                progressBar.Style = ProgressBarStyle.Marquee;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
                 if (gamesListView.SelectedItems.Count == 0)
                 {
-                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                     changeTitle("You must select a game from the Game List!");
                     return;
                 }
@@ -3071,7 +3071,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 }
 
                 progressBar.Value = 0;
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                 string game = gamesToDownload.Length == 1 ? $"\"{gamesToDownload[0]}\"" : "the selected games";
                 isinstalling = true;
                 //Add games to the queue
@@ -3271,7 +3271,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                 // Logger.Log("Files: " + transfersComplete.ToString() + "/" + fileCount.ToString() + " (" + Convert.ToInt32((downloadedSize / totalSize) * 100).ToString() + "% Complete)");
                                 // Logger.Log("Downloaded: " + downloadedSize.ToString() + " of " + totalSize.ToString());
 
-                                progressBar.Style = ProgressBarStyle.Continuous;
+                                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                 progressBar.Value = Convert.ToInt32((downloadedSize / totalSize) * 100);
 
                                 TimeSpan time = TimeSpan.FromSeconds(globalEta);
@@ -3365,7 +3365,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                 Invoke(new Action(() =>
                                 {
                                     speedLabel.Text = "Extracting..."; etaLabel.Text = "Please wait...";
-                                    progressBar.Style = ProgressBarStyle.Continuous;
+                                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                     progressBar.Value = 0;
                                     isInDownloadExtract = true;
                                 }));
@@ -3407,7 +3407,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                             ADB.DeviceID = GetDeviceID();
                             quotaTries = 0;
                             progressBar.Value = 0;
-                            progressBar.Style = ProgressBarStyle.Continuous;
+                            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                             changeTitle("Installing game apk " + gameName, false);
                             etaLabel.Text = "ETA: Wait for install...";
                             speedLabel.Text = "DLS: Finished";
@@ -3484,7 +3484,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                             deleteOBB(packagename);
                                             
                                             // Set up progress bar for OBB copying
-                                            progressBar.Style = ProgressBarStyle.Continuous;
+                                            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                             progressBar.Value = 0;
                                             progressBar.Maximum = 100;
                                             
@@ -3550,7 +3550,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                                             }
                                             
                                             // Reset progress bar
-                                            progressBar.Style = ProgressBarStyle.Continuous;
+                                            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                                             progressBar.Value = 0;
                                             Program.form.changeTitle("");
                                             if (!nodeviceonstart | DeviceConnected)
@@ -3603,7 +3603,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                     {
                         ShowPrcOutput(output);
                     }
-                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                     etaLabel.Text = "ETA: Finished Queue";
                     speedLabel.Text = "DLS: Finished Queue";
                     ProgressText.Text = "";
@@ -3703,7 +3703,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 // Set up progress bar for OBB copying
                 this.Invoke(() =>
                 {
-                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                     progressBar.Value = 0;
                     progressBar.Maximum = 100;
                 });
@@ -3761,7 +3761,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 // Reset progress bar
                 this.Invoke(() =>
                 {
-                    progressBar.Style = ProgressBarStyle.Continuous;
+                    progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                     progressBar.Value = 0;
                     changeTitle("");
                 });
@@ -3785,7 +3785,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
             {
                 ShowPrcOutput(output);
             }
-            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
             etaLabel.Text = "ETA: Finished Queue";
             speedLabel.Text = "DLS: Finished Queue";
             ProgressText.Text = string.Empty;
@@ -4517,7 +4517,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 List<string> whitelistItems = whitelist.ToList();
                 errorOnList = false;
                 newGamesToUploadList = whitelistItems.Intersect(installedGames).ToList();
-                progressBar.Style = ProgressBarStyle.Marquee;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
                 if (SideloaderRCLONE.games.Count > 5)
                 {
                     Thread t1 = new Thread(() =>
@@ -4596,7 +4596,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                         await Task.Delay(100);
                     }
                 }
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                 ListViewItem[] arr = GameList.ToArray();
                 gamesListView.BeginUpdate();
                 gamesListView.Items.Clear();
@@ -4730,7 +4730,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
             if (!isworking)
             {
                 isworking = true;
-                progressBar.Style = ProgressBarStyle.Marquee;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
                 string HWID = SideloaderUtilities.UUID();
                 string GameName = m_combo.SelectedItem.ToString();
                 string packageName = Sideloader.gameNameToPackageName(GameName);
@@ -4809,7 +4809,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 Directory.Delete($"{settings.MainDir}\\{packageName}", true);
                 isworking = false;
                 Program.form.changeTitle("                                   \n\n");
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                 _ = FlexibleMessageBox.Show(Program.form, $"{GameName} pulled to:\n\n{GameName} v{VersionInt} {packageName}.zip\n\nOn your desktop!");
             }
         }
@@ -4858,7 +4858,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 List<string> whitelistItems = whitelist.ToList();
                 errorOnList = false;
                 newGamesToUploadList = whitelistItems.Intersect(installedGames).ToList();
-                progressBar.Style = ProgressBarStyle.Marquee;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
                 if (SideloaderRCLONE.games.Count > 5)
                 {
                     Thread t1 = new Thread(() =>
@@ -4937,7 +4937,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                         await Task.Delay(100);
                     }
                 }
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                 ListViewItem[] arr = GameList.ToArray();
                 gamesListView.BeginUpdate();
                 gamesListView.Items.Clear();
@@ -5000,7 +5000,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                 List<string> whitelistItems = whitelist.ToList();
                 errorOnList = false;
                 newGamesToUploadList = whitelistItems.Intersect(installedGames, StringComparer.OrdinalIgnoreCase).ToList();
-                progressBar.Style = ProgressBarStyle.Marquee;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Marquee;
                 if (SideloaderRCLONE.games.Count > 5)
                 {
                     Thread t1 = new Thread(() =>
@@ -5088,7 +5088,7 @@ Please visit our Telegram (https://t.me/VRPirates) or Discord (https://discord.g
                         await Task.Delay(100);
                     }
                 }
-                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Style = (ProgressStyle)ProgressBarStyle.Continuous;
                 ListViewItem[] arr = GameList.ToArray();
                 gamesListView.BeginUpdate();
                 gamesListView.Items.Clear();
