@@ -1617,3 +1617,57 @@ Success
 07:05:26.264 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
 
 07:09:04.135 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: kill-server
+08:57:37.848 PM (UTC): [INFO] [Logger.Initialize] Logger initialized at: 02:27AM(UTC)
+08:57:37.966 PM (UTC): [INFO] [<Form1_Load>d__35.MoveNext] Starting AndroidSideloader Application
+08:57:37.974 PM (UTC): [INFO] [GetDependencies.downloadFiles] Missing 'Sideloader Launcher.exe'. Attempting to download from github
+08:57:39.069 PM (UTC): [INFO] [GetDependencies.downloadFiles] 'Sideloader Launcher.exe' download successful
+08:57:39.069 PM (UTC): [INFO] [GetDependencies.downloadRclone] Checking for Local rclone...
+08:57:39.788 PM (UTC): [INFO] [GetDependencies.downloadRclone] Current RCLONE Version 1.68.2
+08:57:39.796 PM (UTC): [INFO] [<Form1_Load>d__35.MoveNext] Attempting to Initalize ADB Server
+08:57:39.796 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: kill-server
+08:57:39.828 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: start-server
+08:57:41.885 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] * daemon not running; starting now at tcp:5037
+* daemon started successfully
+
+
+08:57:41.889 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Attempting to update public config from main.
+08:57:42.251 PM (UTC): [ERROR] [GetDependencies.updatePublicConfig] Failed to update public config from main: The remote server returned an error: (404) Not Found., trying fallback.
+08:57:43.331 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Retrieved updated config from fallback: https://vrpirates.wiki/downloads/vrp-public.json.
+08:57:43.333 PM (UTC): [INFO] [GetDependencies.updatePublicConfig] Public config updated successfully from fallback.
+08:57:43.341 PM (UTC): [INFO] [<Form1_Shown>d__36.MoveNext] Using Public Mirror
+08:57:44.201 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Attempting to Update Upload Config
+08:57:44.452 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Retrieved updated config from: https://vrpirates.wiki/downloads/vrp.upload.config
+08:57:44.453 PM (UTC): [INFO] [SideloaderRCLONE.updateUploadConfig] Upload config updated successfully.
+08:57:44.453 PM (UTC): [INFO] [<Form1_Shown>d__36.MoveNext] Initializing Servers
+08:57:44.453 PM (UTC): [INFO] [<initMirrors>d__83.MoveNext] Looking for Additional Mirrors...
+08:57:44.465 PM (UTC): [INFO] [RCLONE.runRcloneCommand_DownloadConfig] Running Rclone command: listremotes --config vrp.download.config --inplace
+08:57:44.573 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_DownloadConfig] Rclone error: 2025/08/17 02:27:44 NOTICE: Config file "E:\\rookie\\rookie\\rclone\\vrp.download.config" not found - using defaults
+
+
+
+08:57:44.573 PM (UTC): [INFO] [<initMirrors>d__83.MoveNext] Loaded following mirrors: 
+08:57:44.597 PM (UTC): [INFO] [SideloaderRCLONE.UpdateMetadataFromPublic] Downloading Metadata
+08:57:44.598 PM (UTC): [INFO] [RCLONE.runRcloneCommand_PublicConfig] Running Rclone command: sync ":http:/meta.7z" "CurrentDirectory"
+08:57:45.430 PM (UTC): [ERROR] [RCLONE.runRcloneCommand_PublicConfig] Rclone error: 2025/08/17 02:27:44 NOTICE: Config file "C:\\Users\\amrit\\AppData\\Roaming\\rclone\\rclone.conf" not found - using defaults
+
+
+
+08:57:45.434 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Extracting Metadata
+08:57:45.436 PM (UTC): [INFO] [Zip.DoExtract] Extract: 7z x "E:\rookie\rookie\meta.7z" -y -o"E:\rookie\rookie\meta" -bsp1
+08:57:46.931 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Updating Metadata
+08:57:47.101 PM (UTC): [INFO] [SideloaderRCLONE.ProcessMetadataFromPublic] Initializing Games List
+08:57:47.105 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: devices
+08:57:49.155 PM (UTC): [INFO] [ADB.RunAdbCommandToString] List of devices attached
+
+
+08:57:49.235 PM (UTC): [INFO] [<CheckForDevice>d__44.MoveNext] Devices:
+08:57:49.237 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: shell df
+08:57:49.255 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
+08:57:49.255 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
+08:57:49.277 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+
+08:57:49.277 PM (UTC): [INFO] [ADB.RunAdbCommandToString] Running command: shell df
+08:57:49.293 PM (UTC): [ERROR] [ADB.RunAdbCommandToString] adb.exe: no devices/emulators found
+

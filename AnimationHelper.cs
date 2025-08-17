@@ -90,7 +90,7 @@ namespace AndroidSideloader
             if (control == null || control.IsDisposed) return;
 
             const int steps = 40;
-            const int stepDelay = duration / steps;
+            int stepDelay = duration / steps;
             
             Size startSize = control.Size;
             int deltaWidth = targetSize.Width - startSize.Width;
